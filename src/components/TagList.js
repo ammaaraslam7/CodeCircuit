@@ -5,32 +5,49 @@ import styled from 'styled-components'
 const ListContainer = styled.div`
   display: inline;
   color: var(--color-textSecondary);
+  
+  
 `
 
 const TagListItemLink = styled(Link)`
-  text-transform: uppercase;
-  color: var(--color-textSecondary);
+  color: white;
+  font-size: 15px;
+  background-color: green;
+  padding: 5px;
+  border-radius: 2px;
+  font-weight: 1000;
+  transition: all 0.2s ease-in-out;
+  align-items: center;
+  text-align: center;
+
+  
+  &:hover {
+    background-color: white;
+    color: green;
+  }
 
   &:not(:first-child) {
     margin-left: 0.3rem;
   }
 
-  &:hover {
-    border-bottom: 1px dotted var(--color-textSecondary);
-  }
-  &:before {
-    content: '#';
-  }
+
 `
 
 const TagListItem = styled.span`
-  text-transform: uppercase;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+  background-color: green;
   color: var(--color-textSecondary);
+  transition: all 0.2s ease-in-out;
+
   &:not(:first-child) {
     margin-left: 0.3rem;
   }
-  &:before {
-    content: '#';
+  
+  &:hover {
+    background-color: var(--color-textSecondary);
+    color: green;
   }
 `
 
@@ -47,7 +64,7 @@ class TagList extends React.Component {
                 <TagListItemLink to={`/tags/${tag}`}>{tag}</TagListItemLink>
               )}
               {noLink && <TagListItem to={`/tags/${tag}`}>{tag}</TagListItem>}
-              {i < tags.length - 1 ? ', ' : ''}
+              {i < tags.length - 1 ? ' ' : ''}
             </Fragment>
           )
         })}
