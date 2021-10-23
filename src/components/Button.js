@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components'
-
-const ButtonComponent = styled.div`
+import {Link} from 'gatsby'
+const ButtonComponent = styled(Link)`
     font-family: "Ubuntu", sans-serif;
     position: relative;
     font-weight: 540;
@@ -23,7 +23,7 @@ const ButtonComponent = styled.div`
 
 
 
-const Button = ({ children, onClick, textColor, disabled, type, style, ...props }) => {
+const Button = ({ children, onClick, to, textColor, disabled, type, style, ...props }) => {
     const [
         hover,
         setHover
@@ -232,6 +232,7 @@ const Button = ({ children, onClick, textColor, disabled, type, style, ...props 
             onMouseLeave={toggleHover}
             {...props}
             type="button"
+            to={to}
             onClick={
 
                     !disabled ? onClick :

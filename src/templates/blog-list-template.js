@@ -12,6 +12,7 @@ import Button from '../components/Button'
 import useSiteMetadata from '../hooks/use-site-config'
 import { media } from '../tokens'
 import useSiteImages from '../hooks/use-site-images'
+import TopicComponent from '../components/TopicsComponent'
 
 const HomeContainer = styled.div`
     background-color: var(--color-darkColor);
@@ -33,8 +34,8 @@ const HomeHero = styled.div`
     display: flex;
     align-items: center;
     text-align: center;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
     
 `
 const HomeHeroLogo = styled.div`
@@ -69,8 +70,8 @@ const HomeHeroInfoPara = styled.p`
     line-height: 0.85cm;
 `
 const HomeBodyWrapper = styled.div`
-    background-color: black;
-    width: 93%;
+    background-color: white;
+    width: 96%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -92,10 +93,11 @@ const RecentPostsSection = styled.div`
     background-size: cover;
     background: var(--color-white);
     padding-top: 20px;
+    padding-bottom: 15px;
 
 `
 
-const RecentPostsSectionTitle = styled.h1`
+const SectionTitle = styled.h1`
     margin-left: 3%;
     text-decoration: none;
     font-size: 3.3rem;
@@ -111,50 +113,41 @@ const AllBtn = styled.div`
     right: 15px;
     transform: translateY(-55px);
 `
-
-const TagsSection = styled.div`
-    position: relative;
-    display: table;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background: var(--color-darkColor);
-    border-top: 2px dashed var(--color-lightColor);
+const RecentPosts = styled.div`
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+`
+const TopicsSection = styled.div`
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 75vh;
+  border-radius: 45px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background: var(--color-white);
+  padding-top: 20px;
 `
 
-const TagsSectionTitle = styled.h1`
-    margin-left: 3%;
-    padding-top: 20px;
-    text-decoration: none;
-    padding-bottom: 20px;
-    font-size: 3.3rem;
-    font-weight: 1500;
-    line-height: 1.3cm;
-    color: var(--color-lightColor);
-`
+const Topics = styled.div`
+  padding-top: 15px;
+  padding-left: 45px;
+  padding-right: 45px;
+  list-style: none;
+  display: grid;
+  justify-items: center;
+  grid-gap: 50px;
+  grid-template-columns: repeat(3, 1fr);
 
-const TopicsWrapper = styled.div`
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    list-style: none;
-    display: grid;
-    justify-items: center;
-    grid-gap: 70px;
-    grid-template-columns: repeat(3, 1fr);
-
-    @media screen and (max-width: 500px) {
-        & {
-        grid-template-columns: repeat(1, 1fr);
-        }
+  @media screen and (max-width: 500px) {
+    & {
+      grid-template-columns: repeat(1, 1fr);
     }
+  }
 `
-
-
 
 class BlogList extends React.Component {
 
@@ -180,12 +173,28 @@ class BlogList extends React.Component {
           </HomeHero>
           <HomeBodyWrapper>
             <RecentPostsSection>
-              <RecentPostsSectionTitle>
+              <SectionTitle>
                 Recent Articles
-                <AllBtn><Button type="mini-primary" textColor='var(--color-darkColor)'>All Posts ➡ </Button></AllBtn>
+                <AllBtn><Button type="mini-primary" textColor='var(--color-darkColor)' to="/articles">All Posts ➡ </Button></AllBtn>
+              </SectionTitle>
+              <RecentPosts>
                 <PostsList posts={posts} />
-              </RecentPostsSectionTitle>
+              </RecentPosts>
             </RecentPostsSection>
+            <TopicsSection>
+              <SectionTitle>
+                Popular Topics
+                <AllBtn><Button type="mini-primary" textColor='var(--color-darkColor)' to="/tags">All Topics ➡ </Button></AllBtn>
+              </SectionTitle>
+              <Topics>
+                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+              </Topics>
+            </TopicsSection>
           </HomeBodyWrapper>
         </HomeContainer>
       </Layout>
@@ -196,7 +205,7 @@ class BlogList extends React.Component {
 export default BlogList
 
 export const pageQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+  query blogListQuery($skip: Int!) {
     site {
       siteMetadata {
         title
@@ -209,7 +218,7 @@ export const pageQuery = graphql`
         fileAbsolutePath: { regex: "//content/posts//" }
         frontmatter: { published: { ne: false }, unlisted: { ne: true } }
       }
-      limit: $limit
+      limit: 3
       skip: $skip
     ) {
       edges {

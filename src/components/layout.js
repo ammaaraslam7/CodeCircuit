@@ -8,11 +8,8 @@ import { GlobalStyle } from './Commons'
 import { media } from '../tokens'
 
 const SiteContent = styled.div`
-  margin: 0 0;
+  margin: 0;
 
-  @media ${media.medium} {
-    margin: 60px 0;
-  }
 `
 
 class Template extends React.Component {
