@@ -1,256 +1,164 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+// /* eslint-disable react-hooks/rules-of-hooks */
 
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
+// import { Link } from 'gatsby'
+// import styled from 'styled-components'
 import useSiteMetadata from '../hooks/use-site-config'
 import { media } from '../tokens'
 import useSiteImages from '../hooks/use-site-images'
 import DarkToggle from './DarkToggle'
+import { Link } from 'gatsby';
+import styled from 'styled-components';
+import {RiArticleFill} from 'react-icons/ri'
+import {FaTags} from 'react-icons/fa'
 
-const HeaderWrapper = styled.header`
-  top: 0;
-  left: 0;
-  margin: 0 auto;
-  display: block;
+
+export const Nav = styled.nav`
+  background: var(--color-darkColor);
   width: 100%;
-  z-index: 1000;
-  background-color: var(--color-primaryAlpha);
-  font-weight: 700;
-
-  @media ${media.medium} {
-    position: fixed;
-  }
-`
-
-const HeaderNav = styled.nav`
-  font-weight: 700;
-  margin-left: auto;
-  margin-right: auto;
-  height: 60px;
+  height: 82px;
   display: flex;
-  flex-direction: row;
-  max-width: 770px;
-  z-index: 1000;
   justify-content: space-between;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding: 0px 10px;
-`
-
-const HeaderLinksContainer = styled.div`
-  display: none;
-  -webkit-box-align: center;
-  align-items: center;
-  @media ${media.medium} {
-    display: flex;
-  }
-`
-
-const HeaderLink = styled(Link)`
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: var(--color-white);
-  border: 0;
-  margin: 0;
-  padding: 8px 10px;
-
-  min-width: 42px;
-  z-index: 10;
-  & + & {
-    margin-left: 0.7rem;
-  }
-`
-
-const HeaderLinkTitle = styled(HeaderLink)`
-  padding-left: 0;
-`
-
-const HeaderLinkTitleContent = styled.span`
-  display: block;
-  padding-left: 0;
-`
-
-const HeaderImage = styled.img`
-  padding: 4px;
-  height: 57px;
-`
-
-const MobilePanel = styled.div`
-  position: absolute;
-  z-index: 20;
-  left: 0;
+  padding: 0.5rem;
+  z-index: 100000;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: var(--color-primary);
-  @media ${media.medium} {
-    display: none;
-  }
-`
-
-const SkipMainContent = styled.a`
-  position: absolute;
-  left: -999px;
-  width: 1px;
-  height: 1px;
-  top: auto;
-  color: var(--color-white);
-  background-color: var(--color-grey700);
-
-  &:focus {
-    display: inline-block;
-    height: auto;
-    width: auto;
-    position: static;
-    padding: 20px 10px;
-  }
-`
-
-const MobileNav = styled.nav`
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  -webkit-box-align: center;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 0px auto;
-
-  & a {
-    display: flex;
-    margin: 10px 0 !important;
-  }
-`
-
-const HeaderLinks = ({ headerLinks }) => {
-  return headerLinks.map((headerLink, i) => (
-    <HeaderLink
-      to={headerLink.url}
-      key={`header-link-${i}`}
-      aria-label={`View ${headerLink.label} page`}
-    >
-      {headerLink.label}
-    </HeaderLink>
-  ))
-}
-
-const BurgerButton = styled.button`
-  z-index: 30;
-  top: 0px;
-  position: relative;
-  color: var(--color-white);
-  display: flex;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px 12px;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-
-  @media ${media.medium} {
-    display: none;
-  }
-`
-
-const BurgerContent = styled.div`
-  width: 24px;
-  top: 30px;
-  height: 2px;
-  background: var(--color-white);
-  position: absolute;
   left: 0;
-  ${props =>
-    props.isToggledOn
-      ? 'background: transparent'
-      : `background: var(--color-white)`};
-  transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
-  ::before {
-    content: '';
-    top: -8px;
-    width: 24px;
-    height: 2px;
-    background: var(--color-white);
-    position: absolute;
-    left: 0;
-    ${props =>
-      props.isToggledOn
-        ? 'transform: rotate(45deg); top: 0;'
-        : 'transform: rotate(0)'};
-    transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
+  font-size: 26px;
+  font-weight: 700;
+  position: fixed;
+  transition: all 0.3s;
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+    font-weight: 650;
   }
-  ::after {
-    top: 8px;
-    content: '';
-    width: 24px;
-    height: 2px;
-    background: white;
-    position: absolute;
-    left: 0;
-    ${props =>
-      props.isToggledOn
-        ? 'transform: rotate(-45deg); top: 0;'
-        : 'transform: rotate(0)'};
-    transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
+  /* Third Nav */
+  /* justify-content: flex-start; */
+`;
+const NavLogoContainer = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+
+`
+
+const NavLogo = styled.img`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 73px;
+  height: 73px;
+  margin-left: 7px;
+  @media screen and (max-width: 768px) {
+    width: 40px;
+  }
+`
+const NavLogoTitle = styled.a`
+  text-decoration: none;
+  color: white;
+  margin-left: 9px;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    margin-left: 5px;
   }
 `
 
-const MobileHeader = ({ headerLinks }) => {
-  const [isToggledOn, setToggle] = useState(false)
-  const toggle = () => setToggle(!isToggledOn)
+export const NavItem = styled.div`
+  transition: all 0.3s;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  @media screen and (max-width: 768px) {
+    padding: 0 0.6rem;
+  }
+  
+`;
 
+export const NavLink = styled(Link)`
+  transition: all 0.3s;
+  color: var(--color-lightColor);
+  &:hover {
+    cursor: pointer;
+    color: blue;
+  }
+`
+
+
+export const NavMenu = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+  /* Second Nav */
+  /* margin-right: 24px; */
+  /* Third Nav */
+  /* width: 100vw;
+  white-space: nowrap; */
+
+`;
+
+export const NavBtns = styled.nav`
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+  /* Third Nav */
+  /* justify-content: flex-end;
+  width: 100vw; */
+
+`;
+
+
+
+const ArticleIcon = styled(RiArticleFill)`
+  transform: translateY(2px);
+  padding: 0;
+`
+const TagsIcon = styled(FaTags)`
+  transform: translateY(2px);
+  padding: 0;
+`
+
+
+const Header = (props) => {
+  const {
+     headerLinks,
+     siteTitle,
+     headerTitle,
+     headerLinksIcon,
+   } = useSiteMetadata()
+   const iconSrc = headerLinksIcon
+     ? useSiteImages(headerLinksIcon).fluid.src
+     : null
   return (
     <>
-      <BurgerButton
-        onClick={toggle}
-        aria-label={`${isToggledOn ? 'close menu' : 'open menu'}`}
-      >
-        <BurgerContent isToggledOn={isToggledOn} />
-      </BurgerButton>
-      {isToggledOn && (
-        <MobilePanel>
-          <MobileNav>
-            <HeaderLinks headerLinks={headerLinks} />
-            <DarkToggle isExpanded={true} />
-          </MobileNav>
-        </MobilePanel>
-      )}
-    </>
-  )
-}
+      <Nav>
+        <NavLogoContainer to="/">
+          {iconSrc && <NavLogo src={iconSrc} />}
+          <NavLogoTitle>Code Circuit</NavLogoTitle>
+        </NavLogoContainer>
+        
 
-const Header = () => {
-  const {
-    headerLinks,
-    siteTitle,
-    headerTitle,
-    headerLinksIcon,
-  } = useSiteMetadata()
-  const iconSrc = headerLinksIcon
-    ? useSiteImages(headerLinksIcon).fluid.src
-    : null
-
-  return (
-    <HeaderWrapper>
-      <HeaderNav>
-        <SkipMainContent href="#main-content">
-          Skip to main content
-        </SkipMainContent>
-        <HeaderLinkTitle to={`/`} aria-label={`View home page`}>
-          {iconSrc && <HeaderImage src={iconSrc} alt={siteTitle} />}
-          <HeaderLinkTitleContent>{headerTitle}</HeaderLinkTitleContent>
-        </HeaderLinkTitle>
-        <HeaderLinksContainer>
-          <HeaderLinks headerLinks={headerLinks} />
+        <NavMenu>
+          <NavItem>
+            <NavLink to="/articles"><ArticleIcon /> Articles</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/tags"><TagsIcon /> Tags</NavLink>
+          </NavItem>
+          {/* Second Nav */}
+          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+        </NavMenu>
+        <NavBtns>
           <DarkToggle />
-        </HeaderLinksContainer>
-        <MobileHeader headerLinks={headerLinks} />
-      </HeaderNav>
-    </HeaderWrapper>
-  )
-}
+        </NavBtns>
+      </Nav>
+    </>
+  );
+};
 
-export default Header
+export default Header;
