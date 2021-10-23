@@ -18,6 +18,11 @@ const colors = {
   darkBlue: '#022a4b',
   beige: '#fff9d9',
   red: '#ff0000',
+  primaryColor: '#0F52BA',
+  secondaryColor: '#FA8072',
+  lightColor: '#D8EEFE',
+  darkColor: '#252A34',
+
 }
 
 export const COLORS = {
