@@ -23,6 +23,23 @@ const colors = {
   lightColor: '#D8EEFE',
   darkColor: '#252A34',
 
+  gatsbyColor: '#452475',
+  reactColor: '#61dafb',
+  pythonColor: '#1d405d',
+  jsColor: '#efd81d',
+  htmlColor: '#dd4b25',
+  cssColor: '#254bdd',
+  djangoColor: '#092d1f',
+  flaskColor:'#000',
+  nodejsColor: '#6aa05c',
+  flutterColor: '#47d1fd',
+  graphqlColor: '#d932a2',
+  nelifyColor: '#2eb2b0',
+  gitColor: '#e94e31',
+  sassColor: '#c76494',
+  githubColor: '#1b1f23',
+
+
 }
 
 export const COLORS = {
