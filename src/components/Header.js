@@ -11,10 +11,11 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import {RiArticleFill} from 'react-icons/ri'
 import {FaTags} from 'react-icons/fa'
+import LogoChange from './LogoChange'
 
 
 export const Nav = styled.nav`
-  background: var(--color-darkColor);
+  background: var(--color-darkerBackground);
   width: 100%;
   height: 82px;
   display: flex;
@@ -39,6 +40,7 @@ const NavLogoContainer = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0;
+  margin-left: 7px;
   &:hover {
     cursor: pointer;
   }
@@ -49,8 +51,8 @@ const NavLogo = styled.img`
   display: flex;
   align-items: center;
   text-decoration: none;
-  width: 73px;
-  height: 73px;
+  width: 70px;
+  height: 70px;
   margin-left: 7px;
   @media screen and (max-width: 768px) {
     width: 40px;
@@ -82,10 +84,10 @@ export const NavItem = styled.div`
 
 export const NavLink = styled(Link)`
   transition: all 0.3s;
-  color: var(--color-lightColor);
+  color: var(--color-primaryColor);
   &:hover {
     cursor: pointer;
-    color: blue;
+    color: var(--color-secondaryColor);
   }
 `
 
@@ -138,7 +140,7 @@ const Header = (props) => {
     <>
       <Nav>
         <NavLogoContainer to="/">
-          {iconSrc && <NavLogo src={iconSrc} />}
+          <LogoChange type='small' to='/' />
           <NavLogoTitle>Code Circuit</NavLogoTitle>
         </NavLogoContainer>
         

@@ -13,23 +13,19 @@ import useSiteMetadata from '../hooks/use-site-config'
 import { media } from '../tokens'
 import useSiteImages from '../hooks/use-site-images'
 import TopicComponent from '../components/TopicsComponent'
+import CodeCircuitLogoLight from '../images/CodeCircuitLogoLight.png'
+import LogoChange from '../components/LogoChange'
 
-const HomeContainer = styled.div`
-    background-color: var(--color-darkColor);
-    width: 100%;
-    padding: 0;
-    align-items: center
-`
 
 const HomeHero = styled.div`
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     overflow: hidden;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background: black;
+    background-color: var(--color-primaryBackground);
     top: 0;
     display: flex;
     align-items: center;
@@ -38,21 +34,24 @@ const HomeHero = styled.div`
     border-bottom-right-radius: 30px;
     
 `
-const HomeHeroLogo = styled.div`
+const HomeHeroLogoContainer = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-
-
-
 `
+const HomeHeroLogo = styled.img`
+  align-items: center;
+  text-decoration: none;
+  width: 180px;
+  height: 180px;
+`
+
 const HomeHeroInfo = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    color: var(--color-primaryColor)
+    color: var(--color-secondaryColor)
 
 `
 const HomeHeroInfoHeading = styled.h1`
@@ -70,14 +69,15 @@ const HomeHeroInfoPara = styled.p`
     line-height: 0.85cm;
 `
 const HomeBodyWrapper = styled.div`
-    background-color: white;
-    width: 96%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 45px;
-    transform: translateY(-50px);
-    padding: 10px;
+  background-color: var(--color-darkerBackground);
+  width: 96%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 45px;
+  transform: translateY(-55px);
+  padding: 10px;
+  z-index: 10;
 
 `
 
@@ -91,7 +91,6 @@ const RecentPostsSection = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background: var(--color-white);
     padding-top: 20px;
     padding-bottom: 15px;
 
@@ -102,10 +101,11 @@ const SectionTitle = styled.h1`
     text-decoration: none;
     font-size: 3.3rem;
     padding-top: 20px;
+    padding-bottom: 10px;
     font-weight: 1500;
     line-height: 1.3cm;
-    color: var(--color-lightColor);
-    border-bottom: 2px solid black;
+    color: var(--color-primaryText);
+    border-bottom: 2px solid var(--color-primaryText);
 `
 
 const AllBtn = styled.div`
@@ -117,19 +117,20 @@ const RecentPosts = styled.div`
   padding-top: 10px;
   padding-left: 25px;
   padding-right: 25px;
+  padding-bottom: 15px;
 `
 const TopicsSection = styled.div`
   position: relative;
   display: table;
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   border-radius: 45px;
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background: var(--color-white);
   padding-top: 20px;
+  z-index: 5;
 `
 
 const Topics = styled.div`
@@ -159,23 +160,23 @@ class BlogList extends React.Component {
     return (
       <Layout>
         <SEO />
-        <HomeContainer>
           <HomeHero>            
             <HomeHeroInfo>
+              <LogoChange type='big' />
               <HomeHeroInfoHeading>
                 Code Circuit
               </HomeHeroInfoHeading>
               <HomeHeroInfoPara>
                 Programming and Web Development tutorials.
               </HomeHeroInfoPara>
-              <Button type="big-secondary" textColor='var(--color-darkColor)'>Secondary</Button>
+              <Button type="big-primary" textColor='var(--color-darkColor)'>Secondary</Button>
             </HomeHeroInfo>
           </HomeHero>
           <HomeBodyWrapper>
             <RecentPostsSection>
               <SectionTitle>
                 Recent Articles
-                <AllBtn><Button type="mini-primary" textColor='var(--color-darkColor)' to="/articles">All Posts ➡ </Button></AllBtn>
+                <AllBtn><Button type="mini-secondary" textColor='var(--color-secondaryText)' to="/articles">All Posts ➡ </Button></AllBtn>
               </SectionTitle>
               <RecentPosts>
                 <PostsList posts={posts} />
@@ -184,19 +185,18 @@ class BlogList extends React.Component {
             <TopicsSection>
               <SectionTitle>
                 Popular Topics
-                <AllBtn><Button type="mini-primary" textColor='var(--color-darkColor)' to="/tags">All Topics ➡ </Button></AllBtn>
+                <AllBtn><Button type="mini-secondary" textColor='var(--color-secondaryText)' to="/tags">All Topics ➡ </Button></AllBtn>
               </SectionTitle>
               <Topics>
-                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
-                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
-                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
-                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
-                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
-                <TopicComponent backgroundColor="var(--color-primaryColor)" textColor="var(--color-darkColor)">Python</TopicComponent>
+                <TopicComponent type="gatsby" to='/tags/gatsby'>Gatsby</TopicComponent>
+                <TopicComponent type="react" to='/tags/react'>React</TopicComponent>
+                <TopicComponent type="python" to='/tags/python'>Python</TopicComponent>
+                <TopicComponent type="django" to='/tags/django'>Django</TopicComponent>
+                <TopicComponent type="css" to='/tags/css'>CSS</TopicComponent>
+                <TopicComponent type="git" to='/tags/git'>Git</TopicComponent>
               </Topics>
             </TopicsSection>
           </HomeBodyWrapper>
-        </HomeContainer>
       </Layout>
     )
   }

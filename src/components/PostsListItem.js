@@ -15,7 +15,7 @@ const Post = styled.li`
   display: flex;
   flex-direction: column;
   padding: 0.3rem;
-  background-color: var(--color-secondaryContentBackground);
+  background-color: var(--color-primaryBackground);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   width: 350px;
@@ -43,7 +43,7 @@ const ReadPost = styled.div`
   text-decoration: none;
   letter-spacing: 0.05em;
   line-height: 2;
-  color: black;
+  color: var(--color-primaryText);
   position: absolute;
   bottom: 7px;
   right: 5px;
@@ -52,7 +52,7 @@ const ReadPost = styled.div`
   transition: all 0.3s;
 `
 const RightArrowIcon = styled(HiArrowRight)`
-  color: black;
+  color: var(--color-primaryText);
   transform: translateY(3px);
   transition: all 0.3s;
 `
@@ -67,15 +67,15 @@ const ReadPostText = styled(Link)`
   padding-right: 12px;
   font-size: 0.9rem;
   background-color: transparent;
-  border: 2px solid black;
+  border: 2px solid var(--color-primaryColor);
   border-radius: 50px;
   transition: all 0.3s;
 
   &:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--color-primaryColor);
+    color: var(--color-primaryText);
     ${RightArrowIcon} {
-      color: white;
+      color: var(--color-primaryText);
       transform: translateY(3px) translateX(5px);
     }
   }
@@ -105,19 +105,20 @@ const PostHeader = styled.header`
 
 const Excerpt = styled.p`
   margin-top: auto;
-  color: black;
+  color: var(--color-primaryText);
   padding: 0.5rem;
   z-index: 1;
   
 `
 
 const PostTitleLink = styled(Link)`
+  font-size: 1.6rem;
   font-weight: 1000;
-  color: black;
+  color: var(--color-secondaryColor);
   z-index: 1;
   &:hover {
-    color: blue;
-    border-bottom: 1px dotted blue;
+    font-weight: 1500;
+    border-bottom: 2px dotted var(--color-secondaryColor);
   }
 `
 const PostTags = styled.div`
@@ -132,20 +133,22 @@ const FooterLine = styled.div`
   padding: 0.5rem;
   position: absolute;
   bottom: 60px;
+  color: var(--color-primaryText);
 `
 
 const Date = styled.span`
-  color: black;
+  color: var(--color-primaryText);
   transform: translateX(3px);
 `
 
 
 const ClockIcon = styled(AiOutlineClockCircle)`
-  color: black;
+  color: var(--color-primaryText);
   transform: translateY(1px) translateX(-2.3px);
+  
 `
 const CalendarIcon = styled(FaRegCalendarAlt)`
-  color: black;
+  color: var(--color-primaryText);
   transform: translateY(1px) translateX(1.5px);
 `
 

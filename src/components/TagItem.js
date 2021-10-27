@@ -3,162 +3,128 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import {Link} from 'gatsby'
 
-const Topic = styled(Link)`
-  position: relative;
-  color: var(--color-secondaryText);
-  padding: 25px;
+const Tags = styled(Link)`
+  padding: 30px;
   border-radius: 15px;
   text-align: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  width: 300;
-  height: 200;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--color-secondaryText);
 
 `
 
-const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, ...props}) => {
+const TagItem = ({children, onClick, fontSize, to, tagName, disabled, size, type, style, border, ...props}) => {
   const [
     hover,
     setHover
   ] = useState(false);
   const toggleHover = () => {
-    setHover(!hover);
-};
+      setHover(!hover);
+  };
   const defaultColor = {
     backgroundColor : 'var(--color-primaryColor)',
+    padding : size,
+    borderRadius : border,
+    fontSize : fontSize,
   }
   const gatsby = {
     backgroundColor : 'var(--color-gatsbyColor)',
-    border : '2px solid var(--color-gatsbyColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
   }
-  const gatsbyHover = {
-    border : '2px solid var(--color-gatsbyColor)',
-    backgroundColor: 'transparent',
-  }
+  
   const react = {
     backgroundColor : 'var(--color-reactColor)',
-    border : '2px solid var(--color-reactColor)',
-  }
-  const reactHover = {
-    border : '2px solid var(--color-reactColor)',
-    backgroundColor: 'transparent',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
   }
   const python = {
     backgroundColor : 'var(--color-pythonColor)',
-    border : '2px solid var(--color-pythonColor)',
-  }
-  const pythonHover = {
-    border : '2px solid var(--color-pythonColor)',
-    backgroundColor: 'transparent',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
   }
   const js = {
     backgroundColor : 'var(--color-jsColor)',
-    border : '2px solid var(--color-jsColor)',
-  }
-  const jsHover = {
-    border : '2px solid var(--color-jsColor)',
-    backgroundColor: 'transparent',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
   }
   const html = {
     backgroundColor : 'var(--color-htmlColor)',
-    textTransform : 'uppercase',
-    border : '2px solid var(--color-htmlColor)',
-
-  }
-  const htmlHover = {
-    border : '2px solid var(--color-htmlColor)',
-    backgroundColor: 'transparent',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
+    textTransform : 'uppercase'
   }
   const css= {
     backgroundColor : 'var(--color-cssColor)',
+    padding : size,
     textTransform : 'uppercase',
-    border : '2px solid var(--color-cssColor)',
-
-  }
-  const cssHover = {
-    border : '2px solid var(--color-cssColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    borderRadius : border,
   }
   const django = {
     backgroundColor : 'var(--color-djangoColor)',
-    border : '2px solid var(--color-djangoColor)',
-
-  }
-  const djangoHover = {
-    border : '2px solid var(--color-djangoColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    padding : size,
+    borderRadius : border,
   }
   const flask = {
     backgroundColor : 'var(--color-flaskColor)',
-    border : '2px solid var(--color-flaskColor)',
-
-  }
-  const flaskHover = {
-    border : '2px solid var(--color-flaskColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    padding : size,
+    borderRadius : border,
   }
   const nodejs = {
     backgroundColor : 'var(--color-nodejsColor)',
-    border : '2px solid var(--color-nodejsColor)',
-  }
-  const nodejsHover = {
-    border : '2px solid var(--color-nodejsColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    borderRadius : border,
+    padding : size,
   }
   const flutter = {
     backgroundColor : 'var(--color-flutterColor)',
-    border : '2px solid var(--color-flutterColor)',
-  }
-  const flutterHover = {
-    border : '2px solid var(--color-flutterColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    borderRadius : border,
+    padding : size,
   }
   const graphql = {
     backgroundColor : 'var(--color-graphqlColor)',
-    border : '2px solid var(--color-graphqlColor)',
-  }
-  const graphqlHover = {
-    border : '2px solid var(--color-graphqlColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    borderRadius : border,
+    padding : size,
   }
   const netlify = {
     backgroundColor : 'var(--color-netlifyColor)',
-    border : '2px solid var(--color-netlifyColor)',
-
-  }
-  const netlifyHover = {
-    border : '2px solid var(--color-netlifyColor)',
-    backgroundColor: 'transparent',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
   }
   const git = {
     backgroundColor : 'var(--color-gitColor)',
-    border : '2px solid var(--color-gitColor)',
-
-  }
-  const gitHover = {
-    border : '2px solid var(--color-gitColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    borderRadius : border,
+    padding : size,
   }
   const sass = {
     backgroundColor : 'var(--color-sassColor)',
-    border : '2px solid var(--color-sassColor)',
-
-  }
-  const sassHover = {
-    border : '2px solid var(--color-sassColor)',
-    backgroundColor: 'transparent',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
   }
   const github = {
     backgroundColor : 'var(--color-githubColor)',
-    border : '2px solid var(--color-githubColor)',
-
-  }
-  const githubHover = {
-    border : '2px solid var(--color-githubColor)',
-    backgroundColor: 'transparent',
+    fontSize : fontSize,
+    borderRadius : border,
+    padding : size,
   }
   const commonStyles = {
     backgroundColor : 'var(--color-secondaryColor)',
+    borderRadius : border,
+    padding : size,
     color           : 'white'
   };
   const outlineStyles = {
@@ -190,7 +156,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
           tagStyle = gatsby;
         }
         else {
-          tagStyle = gatsbyHover;
+          tagStyle = gatsby;
         }
         break;
       case 'react':
@@ -198,7 +164,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
           tagStyle = react;
         }
         else {
-          tagStyle = reactHover;
+          tagStyle = react;
         }
         break;
       case 'python':
@@ -206,7 +172,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
           tagStyle = python;
         }
         else {
-          tagStyle = pythonHover;
+          tagStyle = python;
         }
         break;
       case 'js':
@@ -214,7 +180,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
           tagStyle = js;
         }
         else {
-          tagStyle = jsHover;
+          tagStyle = js;
           }
           break;
         case 'html':
@@ -222,7 +188,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = html;
             }
           else {
-            tagStyle = htmlHover;
+            tagStyle = html;
             }
           break;
         case 'css':
@@ -230,7 +196,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = css;
             }
           else {
-            tagStyle = cssHover;
+            tagStyle = css;
             }
           break;
         case 'django':
@@ -238,7 +204,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = django;
           }
           else {
-            tagStyle = djangoHover;
+            tagStyle = django;
           }
           break;
         case 'flask':
@@ -246,7 +212,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = flask;
           }
           else {
-            tagStyle = flaskHover;
+            tagStyle = flask;
           }
           break;
         case 'nodejs':
@@ -254,7 +220,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = nodejs;
           }
           else {
-            tagStyle = nodejsHover;
+            tagStyle = nodejs;
             }
           break;
         case 'flutter':
@@ -262,7 +228,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = flutter;
           }
           else {
-            tagStyle = flutterHover;
+            tagStyle = flutter;
           }
           break;
         case 'graphql':
@@ -270,7 +236,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = graphql;
           }
           else {
-            tagStyle = graphqlHover;
+            tagStyle = graphql;
             }
           break;
         case 'netlify':
@@ -278,7 +244,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = netlify;
           }
           else {
-            tagStyle = netlifyHover;
+            tagStyle = netlify;
           }
           break;
         case 'git':
@@ -286,7 +252,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = git;
           }
           else {
-            tagStyle = gitHover;
+            tagStyle = git;
           }
           break;
         case 'github':
@@ -294,7 +260,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = github;
           }
           else {
-            tagStyle = githubHover;
+            tagStyle = github;
           }
           break;
         case 'sass':
@@ -302,7 +268,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             tagStyle = sass;
         }
           else {
-            tagStyle = sassHover;
+            tagStyle = sass;
           }
           break;
         default:
@@ -310,7 +276,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             break;
       }
       return (
-        <Topic
+        <Tags
              style={
 
                      disabled ? { ...commonStyles, ...tagStyle, ...disabledStyle, ...style } :
@@ -328,7 +294,7 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
             }
         >
             {children || 'button'}
-        </Topic>
+        </Tags>
     );
 }
-export default TopicComponent;
+export default TagItem;

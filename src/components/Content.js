@@ -22,7 +22,7 @@ const ContentBody = styled.div`
   }
 
   & a {
-    fill: var(--color-text);
+    fill: var(--color-primaryText);
     box-shadow: 0 2px 0 0 var(--color-secondary);
 
     &:hover {

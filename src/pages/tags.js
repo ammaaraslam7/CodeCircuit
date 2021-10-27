@@ -13,221 +13,38 @@ import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
 import Hero from '../components/Hero'
 import styled from 'styled-components'
+import TagItem from '../components/TagItem'
 
-const Tags = styled.li`
-  width: 30px;
-  align-items: center;
-  text-align: center;
-
+const PageBody = styled.div`
+    background-color: white;
+    width: 96%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px;
+    transform: translateY(-50px);
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 `
 
-const TagItem = ({children, onClick, to, tagName, disabled, type, style, ...props}) => {
-  const [
-    hover,
-    setHover
-  ] = useState(false);
-  const toggleHover = () => {
-      setHover(!hover);
-  };
-  const defaultColor = {
-    backgroundColor : 'grey',
-  }
-  const gatsby = {
-    backgroundColor : 'var(--color-gatsbyColor)',
-  }
-  const react = {
-    backgroundColor : 'var(--color-reactColor)',
-  }
-  const python = {
-    backgroundColor : 'var(--color-pythonColor)',
-  }
-  const js = {
-    backgroundColor : 'var(--color-jsColor)',
-  }
-  const html = {
-    backgroundColor : 'var(--color-htmlColor)',
-  }
-  const css= {
-    backgroundColor : 'var(--color-cssColor)',
-  }
-  const django = {
-    backgroundColor : 'var(--color-djangoColor)',
-  }
-  const flask = {
-    backgroundColor : 'var(--color-flaskColor)',
-  }
-  const nodejs = {
-    backgroundColor : 'var(--color-nodejsColor)',
-  }
-  const flutter = {
-    backgroundColor : 'var(--color-flutterColor)',
-  }
-  const graphql = {
-    backgroundColor : 'var(--color-graphqlColor)',
-  }
-  const netlify = {
-    backgroundColor : 'var(--color-netlifyColor)',
-  }
-  const git = {
-    backgroundColor : 'var(--color-gitColor)',
-  }
-  const sass = {
-    backgroundColor : 'var(--color-sassColor)',
-  }
-  const github = {
-    backgroundColor : 'var(--color-githubColor)',
-  }
-  const commonStyles = {
-    backgroundColor : 'var(--color-secondaryColor)',
-    color           : 'white'
-  };
-  const outlineStyles = {
-      border          : `1px solid var(--color-primaryColor)`,
-      color           : 'var(--color-primaryColor)',
-      backgroundColor : 'white'
-  };
-  const outlineHoverStyle = {
-      color           : 'white',
-      backgroundColor : 'var(--color-primaryColor)'
-  };
+const TagList = styled.div`
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 100px;
+  padding-right: 100px;
+  list-style: none;
+  display: grid;
+  justify-items: center;
+  grid-gap: 100px;
+  grid-template-columns: repeat(4, 1fr);
 
-  const roundedStyle = {
-      backgroundColor : 'var(--color-primaryColor)',
-      color           : 'white',
-      borderRadius    : '25px'
-  };
-  const disabledStyle = {
-      cursor          : 'default',
-      backgroundColor : 'var(--color-primaryColor)',
-      color           : 'white',
-      opacity         : 0.4
-  };
-
-  let tagStyle;
-    switch (type) {
-      case 'gatsby':
-        if (hover) {
-          tagStyle = gatsby;
-        }
-        else {
-          tagStyle = gatsby;
-        }
-        break;
-      case 'gatsby':
-        if (hover) {
-          tagStyle = gatsby;
-        }
-        else {
-          tagStyle = gatsby;
-        }
-        break;
-      case 'gatsby':
-        if (hover) {
-          tagStyle = gatsby;
-        }
-        else {
-          tagStyle = gatsby;
-        }
-        break;
-      case 'gatsby':
-        if (hover) {
-          tagStyle = gatsby;
-        }
-        else {
-          tagStyle = gatsby;
-          }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-            }
-          else {
-            tagStyle = gatsby;
-            }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-            }
-          else {
-            tagStyle = gatsby;
-            }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-          }
-          else {
-            tagStyle = gatsby;
-          }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-          }
-          else {
-            tagStyle = gatsby;
-          }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-          }
-          else {
-            tagStyle = gatsby;
-            }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-          }
-          else {
-            tagStyle = gatsby;
-          }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-          }
-          else {
-            tagStyle = gatsby;
-            }
-          break;
-        case 'gatsby':
-          if (hover) {
-            tagStyle = gatsby;
-          }
-          else {
-            tagStyle = gatsby;
-          }
-          break;
-        default:
-            tagStyle = defaultColor;
-            break;
-      }
-      return (
-        <Tags
-             style={
-
-                     disabled ? { ...commonStyles, ...btnStyle, ...disabledStyle, ...style } :
-                     { ...commonStyles, ...btnStyle, ...style }
-             }
-            onMouseEnter={toggleHover}
-            onMouseLeave={toggleHover}
-            {...props}
-            type="button"
-            to={to}
-            onClick={
-
-                    !disabled ? onClick :
-                    () => {}
-            }
-        >
-            {children || 'button'}
-        </Tags>
-    );
-}
-export default TagItem;
+  @media screen and (max-width: 500px) {
+    & {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+`
 
 const TagsPage = ({
   data: {
@@ -240,19 +57,20 @@ const TagsPage = ({
     <Layout>
         <SEO title={`All Tags`} />
         <Hero title="All Tags" />
-        <h1>All Tags</h1>
-        <ul>
-            {group.map(tag => (
-            <li key={tag.fieldValue}>
-                <TagItem type={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue} ({tag.totalCount})
-                </TagItem>
-                {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue} ({tag.totalCount})
-                </Link> */}
-            </li>
-            ))}
-        </ul>
+        <PageBody>
+          <TagList>
+              {group.map(tag => (
+              <li key={tag.fieldValue}>
+                  <TagItem type={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                  {tag.fieldValue} ({tag.totalCount})
+                  </TagItem>
+                  {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                  {tag.fieldValue} ({tag.totalCount})
+                  </Link> */}
+              </li>
+              ))}
+          </TagList>
+        </PageBody>
     </Layout>
       
 )

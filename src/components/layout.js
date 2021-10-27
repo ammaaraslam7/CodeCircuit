@@ -9,6 +9,10 @@ import { media } from '../tokens'
 
 const SiteContent = styled.div`
   margin: 0;
+  background-color: var(--color-lighterBackground);
+  width: 100%;
+  padding: 0;
+  align-items: center
 
 `
 
@@ -25,9 +29,12 @@ class Template extends React.Component {
           />
         </Helmet>
         <GlobalStyle />
-        <Header />
-        <SiteContent>{children}</SiteContent>
-        <Footer />
+        
+        <SiteContent>
+          <Header />
+          {children}
+          <Footer />
+        </SiteContent>
       </>
     )
   }

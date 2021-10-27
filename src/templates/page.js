@@ -7,6 +7,20 @@ import Wrapper from '../components/Wrapper'
 import Hero from '../components/Hero'
 import SEO from '../components/SEO'
 import Disqus from '../components/Disqus'
+import styled from 'styled-components'
+
+const PageBody = styled.div`
+    background-color: white;
+    width: 96%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px;
+    transform: translateY(-50px);
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+`
 
 const Page = props => {
   const page = props.data.page
@@ -25,11 +39,11 @@ const Page = props => {
         title={page.frontmatter.title}
       />
 
-      <Wrapper>
+      <PageBody>
         <article>
           <Content content={page.body} date={page.frontmatter.date} />
         </article>
-      </Wrapper>
+      </PageBody>
 
       {page.frontmatter.disqus && (
         <Wrapper as="aside">

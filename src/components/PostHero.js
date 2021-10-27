@@ -12,7 +12,6 @@ const HeroContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: black;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 `
@@ -39,9 +38,12 @@ const HeroSubTitle = styled.h2`
 `
 
 const Hero = props => {
+  const { siteCover } = useSiteMetadata()
+  const { fluid } = useSiteImages(siteCover)
+  const heroImg = props.heroImg || fluid.src
 
   return (
-    <HeroContainer>
+    <HeroContainer style={{ backgroundImage: `url("${heroImg}")` }}>
       <TitleContainer>
         <HeroTitle>{props.title}</HeroTitle>
         {props.subTitle && <HeroSubTitle>{props.subTitle}</HeroSubTitle>}

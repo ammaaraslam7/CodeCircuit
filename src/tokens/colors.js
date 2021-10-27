@@ -1,5 +1,8 @@
 // 50 shades of grey generator
 // https://javisperez.github.io/tailwindcolorshades/#/?%233E4047=3E4047&tv=1
+import CodeCircuitLogoLight from '../images/CodeCircuitLogoLight.png'
+import CodeCircuitLogoDark from '../images/CodeCircuitLogoDark.png'
+
 const colors = {
   grey100: '#ECECED',
   grey200: '#CFCFD1',
@@ -21,7 +24,11 @@ const colors = {
   primaryColor: '#0F52BA',
   secondaryColor: '#FA8072',
   lightColor: '#D8EEFE',
+  darkerLightColor: '#aadafc',
+  lighterLightColor: 'e7f4fe',
   darkColor: '#252A34',
+  darkerDarkColor: '#16191f',
+  lighterDarkColor: '#333947',
 
   gatsbyColor: '#452475',
   reactColor: '#61dafb',
@@ -34,23 +41,41 @@ const colors = {
   nodejsColor: '#6aa05c',
   flutterColor: '#47d1fd',
   graphqlColor: '#d932a2',
-  nelifyColor: '#2eb2b0',
+  netlifyColor: '#2eb2b0',
   gitColor: '#e94e31',
   sassColor: '#c76494',
   githubColor: '#1b1f23',
+  lightLogo: CodeCircuitLogoDark,
+  darkLogo: CodeCircuitLogoLight,
 
 
 }
 
 export const COLORS = {
   ...colors,
-  text: {
-    light: colors.grey500,
-    dark: colors.white,
+  logoChange: {
+    light: colors.darkLogo,
+    dark: colors.lightLogo,
   },
-  textSecondary: {
-    light: colors.blueGreyed,
-    dark: '#c6d8e0',
+  primaryBackground: {
+    light: colors.lightColor,
+    dark: colors.darkColor,
+  },
+  darkerBackground: {
+    light: colors.darkerLightColor,
+    dark: colors.darkerDarkColor,
+  },
+  lighterBackground: {
+    light: colors.lighterLightColor,
+    dark: colors.lighterDarkColor,
+  },
+  primaryText: {
+    light: colors.darkerDarkColor,
+    dark: colors.lighterLightColor,
+  },
+  secondaryText: {
+    light: colors.lighterDarkColor,
+    dark: colors.darkerLightColor,
   },
   siteBackground: {
     light: '#f4f8fb',

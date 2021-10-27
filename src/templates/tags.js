@@ -8,13 +8,27 @@ import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
 import Hero from '../components/Hero'
 
+const PageBody = styled.div`
+    background-color: white;
+    width: 96%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px;
+    transform: translateY(-50px);
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+`
+
 const PageTitle = styled.h1`
   padding-bottom: 10px;
+  text-transform: capitalize;
 `
 
 class Tags extends React.Component {
   render() {
-    const pageTitle = `#${this.props.pageContext.tag}`
+    const pageTitle = `${this.props.pageContext.tag}`
     const posts = this.props.data.posts.edges
 
     return (
@@ -22,10 +36,10 @@ class Tags extends React.Component {
         <SEO title={`Top blog posts on ${this.props.pageContext.tag}`} />
         <Hero title={pageTitle} />
 
-        <Wrapper>
-          <PageTitle>Posts tagged as {this.props.pageContext.tag}</PageTitle>
+        <PageBody>
+          <PageTitle>Posts on {this.props.pageContext.tag}</PageTitle>
           <PostsList posts={posts} />
-        </Wrapper>
+        </PageBody>
       </Layout>
     )
   }

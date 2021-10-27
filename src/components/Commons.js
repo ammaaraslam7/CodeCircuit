@@ -10,12 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 
-body {
-  font-family: "Lato", sans-serif;
-  color: var(--color-text);
-  background-color: var(--color-siteBackground);
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -25,7 +19,7 @@ img {
 
 a {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-primaryText);
 }
 
 hr {
@@ -60,7 +54,7 @@ export const Text = styled.p`
 
 export const Bull = styled.span`
   display: inline-block;
-  color: var(--color-textSecondary);
+  color: var(--color-secondaryText);
   margin: 0 4px;
   &::before {
     content: '•';
@@ -69,7 +63,7 @@ export const Bull = styled.span`
 
 const ReadingTimeContainer = styled.span`
   text-transform: uppercase;
-  color: var(--color-textSecondary);
+  color: var(--color-secondaryText);
 `
 
 export const ReadingTime = props => {

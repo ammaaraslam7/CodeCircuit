@@ -2,11 +2,25 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Wrapper from '../components/Wrapper'
-import Hero from '../components/Hero'
+import PostHero from '../components/PostHero'
 import Article from '../components/Article'
 import PrevNextPost from '../components/PrevNextPost'
 import SEO from '../components/SEO'
 import Disqus from '../components/Disqus'
+import styled from 'styled-components'
+
+const PageBody = styled.div`
+    background-color: white;
+    width: 96%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px;
+    transform: translateY(-50px);
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+`
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -28,14 +42,14 @@ class BlogPostTemplate extends React.Component {
           isBlogPost
         />
 
-        <Hero
+        <PostHero
           heroImg={post.frontmatter.cover && post.frontmatter.cover.publicURL}
           title={post.frontmatter.title}
         />
 
-        <Wrapper>
+        <PageBody>
           <Article post={post} />
-        </Wrapper>
+        </PageBody>
 
         <Wrapper as="aside">
           <Disqus slug={post.frontmatter.slug} title={post.frontmatter.title} />

@@ -1,15 +1,18 @@
 ---
-title: "Le Corbeau et le Renard (fake French post)"
+title: 'Le Corbeau et le Renard (fake French post)'
 slug: post-en-francais
 cover: ./cover.jpg
 generate-card: false
 date: 2018-01-02
 language: fr
 tags:
-    - cheese
-    - baguette
-    - cliche
-    - fake
+  - cheese
+  - baguette
+  - cliche
+  - fake
+  - flutter
+  - html
+  - css
 ---
 
 Maître Corbeau, sur un arbre perché,  
