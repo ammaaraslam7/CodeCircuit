@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import TagItem from './TagItem'
+import TopicItem from './TopicItem'
 
 const ListContainer = styled.div`
   display: inline;
@@ -62,9 +62,9 @@ class TagList extends React.Component {
           return (
             <Fragment key={`tag-list-${i}`}>
               {!noLink && (
-                <TagItem type={tag} size='5px' border='3px' fontSize='15px' to={`/tags/${tag}`}>{tag}</TagItem>
+                <TopicItem type={tag} size='5px' border='3px' fontSize='15px' to={`/tags/${tag}`}>{tag}</TopicItem>
               )}
-              {noLink && <TagItem type={tag} size='5px' fontSize='15px' border='3px' to={`/tags/${tag}`}>{tag}</TagItem>}
+              {noLink && <TopicItem type={tag} size='5px' fontSize='15px' border='3px' to={`/tags/${tag}`}>{tag}</TopicItem>}
               {i < tags.length - 1 ? ' ' : ''}
             </Fragment>
           )

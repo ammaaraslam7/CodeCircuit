@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import useSiteMetadata from '../hooks/use-site-config'
 import useSiteImages from '../hooks/use-site-images'
+import '@fontsource/rubik/800.css'
 
 const HeroContainer = styled.div`
   position: relative;
@@ -12,9 +13,9 @@ const HeroContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: black;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  background-color: var(--color-primaryBackground);
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
 `
 
 const TitleContainer = styled.div`
@@ -26,10 +27,10 @@ const TitleContainer = styled.div`
 
 const HeroTitle = styled.h1`
   font-weight: 700;
-  font-size: 3.5rem;
+  font-size: 4.1rem;
   margin: 10px 50px;
-  color: var(--color-white);
-  text-shadow: 1px 1px 4px rgba(34, 34, 34, 0.85);
+  font-family: 'Rubik';
+  color: var(--color-secondaryColor);
 `
 
 const HeroSubTitle = styled.h2`

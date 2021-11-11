@@ -13,17 +13,16 @@ import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
 import Hero from '../components/Hero'
 import styled from 'styled-components'
-import TagItem from '../components/TagItem'
+import TopicItem from '../components/TopicItem'
 
 const PageBody = styled.div`
-    background-color: white;
-    width: 96%;
+    background-color: var(--color-darkerBackground);
+    width: 97%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     border-radius: 45px;
     transform: translateY(-50px);
-    padding: 10px;
     padding-top: 20px;
     padding-bottom: 10px;
 `
@@ -31,8 +30,8 @@ const PageBody = styled.div`
 const TagList = styled.div`
   padding-top: 60px;
   padding-bottom: 60px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
   list-style: none;
   display: grid;
   justify-items: center;
@@ -61,9 +60,9 @@ const TagsPage = ({
           <TagList>
               {group.map(tag => (
               <li key={tag.fieldValue}>
-                  <TagItem type={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                  <TopicItem type={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                   {tag.fieldValue} ({tag.totalCount})
-                  </TagItem>
+                  </TopicItem>
                   {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                   {tag.fieldValue} ({tag.totalCount})
                   </Link> */}

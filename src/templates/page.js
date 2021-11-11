@@ -8,18 +8,18 @@ import Hero from '../components/Hero'
 import SEO from '../components/SEO'
 import Disqus from '../components/Disqus'
 import styled from 'styled-components'
+import LeftPageBody from '../components/LeftPageBody'
+import RightSection from '../components/RightSection'
 
 const PageBody = styled.div`
-    background-color: white;
-    width: 96%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 45px;
-    transform: translateY(-50px);
-    padding: 10px;
-    padding-top: 20px;
-    padding-bottom: 10px;
+  background-color: var(--color-lighterBackground);
+  width: 100%;
+  content: "";
+  clear: both;
+  display: table;
+  padding-left: 15px;
+  padding-right: 15px;
+  transform: translateY(-50px);
 `
 
 const Page = props => {
@@ -35,21 +35,17 @@ const Page = props => {
       />
 
       <Hero
-        heroImg={page.frontmatter.cover && page.frontmatter.cover.publicURL}
         title={page.frontmatter.title}
       />
 
       <PageBody>
-        <article>
-          <Content content={page.body} date={page.frontmatter.date} />
-        </article>
+        <LeftPageBody>
+          <article>
+            <Content content={page.body} date={page.frontmatter.date} />
+          </article>
+        </LeftPageBody>
+        <RightSection />
       </PageBody>
-
-      {page.frontmatter.disqus && (
-        <Wrapper as="aside">
-          <Disqus slug={page.frontmatter.slug} title={page.frontmatter.title} />
-        </Wrapper>
-      )}
     </Layout>
   )
 }

@@ -9,6 +9,8 @@ import {AiOutlineClockCircle} from 'react-icons/ai'
 import {FaRegCalendarAlt} from 'react-icons/fa'
 import {HiArrowRight} from 'react-icons/hi'
 import useSiteImages from '../hooks/use-site-images'
+import '@fontsource/rubik/700.css'
+import '@fontsource/roboto/400.css'
 
 const Post = styled.li`
   position: relative;
@@ -50,6 +52,7 @@ const ReadPost = styled.div`
   padding: 10px;
   z-index: 1;
   transition: all 0.3s;
+  font-family: 'Roboto';
 `
 const RightArrowIcon = styled(HiArrowRight)`
   color: var(--color-primaryText);
@@ -61,6 +64,7 @@ const RightArrowIcon = styled(HiArrowRight)`
 const ReadPostText = styled(Link)`
   text-align: right;
   align-items: right;
+  font-family: 'Roboto';
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 12px;
@@ -107,11 +111,14 @@ const Excerpt = styled.p`
   margin-top: auto;
   color: var(--color-primaryText);
   padding: 0.5rem;
+  font-family: 'Roboto';
+
   z-index: 1;
   
 `
 
 const PostTitleLink = styled(Link)`
+    font-family: 'Rubik';
   font-size: 1.6rem;
   font-weight: 1000;
   color: var(--color-secondaryColor);
@@ -132,6 +139,8 @@ const FooterLine = styled.div`
   z-index: 1;
   padding: 0.5rem;
   position: absolute;
+  font-family: 'Roboto';
+
   bottom: 60px;
   color: var(--color-primaryText);
 `

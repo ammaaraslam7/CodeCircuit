@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ThemeContext } from '../ThemeContext'
-import MoonIcon from './icons/moon.svg'
-import SunIcon from './icons/sun.svg'
 import {BsMoonStarsFill} from 'react-icons/bs'
-import {BsFillSun} from 'react-icons/bs'
+import {BsFillSunFill} from 'react-icons/bs'
+import '@fontsource/rubik/800.css'
 
 const DarkModeButton = styled.button`
   background: transparent;
@@ -13,12 +12,11 @@ const DarkModeButton = styled.button`
   color: #ffffff;
   font-weight: 700;
   margin: 10px 0;
-  font-size: 16px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Rubik';
 `
 
 const MoonIcon = styled(BsMoonStarsFill)`
-  font-size: 18px;
+  font-size: 26px;
   color: var(--color-primaryColor);
   transition: all 0.2s;
   &:hover{
@@ -27,8 +25,8 @@ const MoonIcon = styled(BsMoonStarsFill)`
     cursor: pointer;
   }
 `
-const SunIcon = styled(BsFillSun)`
-  font-size: 18px;
+const SunIcon = styled(BsFillSunFill)`
+  font-size: 26px;
   color: var(--color-primaryColor);
   transition: all 0.2s;
   &:hover{

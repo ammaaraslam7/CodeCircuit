@@ -2,163 +2,284 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components'
 import {Link} from 'gatsby'
+import '@fontsource/roboto/400.css'
+import '@fontsource/rubik/700.css'
 
 const Topic = styled(Link)`
-  position: relative;
-  color: var(--color-secondaryText);
-  padding: 25px;
+  padding: 30px;
   border-radius: 15px;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  width: 300;
-  height: 200;
+  text-transform: capitalize;
+  color: var(--color-secondaryText);
+  font-family: 'Rubik';
 
 `
 
-const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, ...props}) => {
+const TopicItem = ({children, onClick, fontSize, to, tagName, disabled, size, type, style, border, ...props}) => {
   const [
     hover,
     setHover
   ] = useState(false);
   const toggleHover = () => {
-    setHover(!hover);
-};
+      setHover(!hover);
+  };
   const defaultColor = {
     backgroundColor : 'var(--color-primaryColor)',
+    padding : size,
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
   }
   const gatsby = {
     backgroundColor : 'var(--color-gatsbyColor)',
     border : '2px solid var(--color-gatsbyColor)',
+    borderRadius : border,
+    color: 'var(--color-darkerBackground)',
+    fontSize : fontSize,
+    padding : size,
+  }
+  
+  const react = {
+    backgroundColor : 'var(--color-reactColor)',
+    border : '2px solid var(--color-reactColor)',
+    borderRadius : border,
+    color: 'var(--color-darkerBackground)',
+    fontSize : fontSize,
+    padding : size,
+  }
+  const python = {
+    backgroundColor : 'var(--color-pythonColor)',
+    borderRadius : border,
+    border : '2px solid var(--color-pythonColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    padding : size,
+  }
+  const js = {
+    backgroundColor : 'var(--color-jsColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    border : '2px solid var(--color-jsColor)',
+    padding : size,
+    color: 'var(--color-darkerBackground)',
+  }
+  const html = {
+    backgroundColor : 'var(--color-htmlColor)',
+    borderRadius : border,
+    border : '2px solid var(--color-htmlColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    padding : size,
+    textTransform : 'uppercase'
+  }
+  const css= {
+    backgroundColor : 'var(--color-cssColor)',
+    padding : size,
+    textTransform : 'uppercase',
+    color: 'var(--color-darkerBackground)',
+    fontSize : fontSize,
+    border : '2px solid var(--color-cssColor)',
+    borderRadius : border,
+  }
+  const django = {
+    backgroundColor : 'var(--color-djangoColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    padding : size,
+    borderRadius : border,
+    border : '2px solid var(--color-djangoColor)',
+  }
+  const flask = {
+    backgroundColor : 'var(--color-flaskColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    padding : size,
+    borderRadius : border,
+    border : '2px solid var(--color-flaskColor)',
+  }
+  const nodejs = {
+    backgroundColor : 'var(--color-nodejsColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    borderRadius : border,
+    border : '2px solid var(--color-nodejsColor)',
+    padding : size,
+  }
+  const flutter = {
+    backgroundColor : 'var(--color-flutterColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    borderRadius : border,
+    border : '2px solid var(--color-flutterColor)',
+    padding : size,
+  }
+  const graphql = {
+    backgroundColor : 'var(--color-graphqlColor)',
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    borderRadius : border,
+    border : '2px solid var(--color-graphqlColor)',
+    padding : size,
+  }
+  const netlify = {
+    backgroundColor : 'var(--color-netlifyColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    border : '2px solid var(--color-netlifyColor)',
+    padding : size,
+  }
+  const git = {
+    backgroundColor : 'var(--color-gitColor)',
+    fontSize : fontSize,
+    borderRadius : border,
+    color: 'var(--color-darkerBackground)',
+    border : '2px solid var(--color-gitColor)',
+    padding : size,
+  }
+  const sass = {
+    backgroundColor : 'var(--color-sassColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-darkerBackground)',
+    padding : size,
+    border : '2px solid var(--color-sassColor)',
+  }
+  const github = {
+    backgroundColor : 'var(--color-githubColor)',
+    fontSize : fontSize,
+    borderRadius : border,
+    color: 'var(--color-darkerBackground)',
+    border : '2px solid var(--color-githubColor)',
+    padding : size,
   }
   const gatsbyHover = {
     border : '2px solid var(--color-gatsbyColor)',
     backgroundColor: 'transparent',
-  }
-  const react = {
-    backgroundColor : 'var(--color-reactColor)',
-    border : '2px solid var(--color-reactColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-gatsbyColor)',
+    padding : size,
   }
   const reactHover = {
     border : '2px solid var(--color-reactColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-reactColor)',
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const python = {
-    backgroundColor : 'var(--color-pythonColor)',
-    border : '2px solid var(--color-pythonColor)',
   }
   const pythonHover = {
     border : '2px solid var(--color-pythonColor)',
     backgroundColor: 'transparent',
-  }
-  const js = {
-    backgroundColor : 'var(--color-jsColor)',
-    border : '2px solid var(--color-jsColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-pythonColor)',
+    padding : size,
   }
   const jsHover = {
     border : '2px solid var(--color-jsColor)',
     backgroundColor: 'transparent',
-  }
-  const html = {
-    backgroundColor : 'var(--color-htmlColor)',
-    textTransform : 'uppercase',
-    border : '2px solid var(--color-htmlColor)',
-
+    borderRadius : border,
+    color: 'var(--color-jsColor)',
+    fontSize : fontSize,
+    padding : size,
   }
   const htmlHover = {
     border : '2px solid var(--color-htmlColor)',
+    borderRadius : border,
+    color: 'var(--color-htmlColor)',
+    fontSize : fontSize,
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const css= {
-    backgroundColor : 'var(--color-cssColor)',
-    textTransform : 'uppercase',
-    border : '2px solid var(--color-cssColor)',
-
   }
   const cssHover = {
     border : '2px solid var(--color-cssColor)',
+    borderRadius : border,
+    color: 'var(--color-cssColor)',
+    fontSize : fontSize,
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const django = {
-    backgroundColor : 'var(--color-djangoColor)',
-    border : '2px solid var(--color-djangoColor)',
-
   }
   const djangoHover = {
     border : '2px solid var(--color-djangoColor)',
+    borderRadius : border,
+    color: 'var(--color-djangoColor)',
+    fontSize : fontSize,
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const flask = {
-    backgroundColor : 'var(--color-flaskColor)',
-    border : '2px solid var(--color-flaskColor)',
-
   }
   const flaskHover = {
     border : '2px solid var(--color-flaskColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-flaskColor)',
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const nodejs = {
-    backgroundColor : 'var(--color-nodejsColor)',
-    border : '2px solid var(--color-nodejsColor)',
   }
   const nodejsHover = {
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
     border : '2px solid var(--color-nodejsColor)',
     backgroundColor: 'transparent',
-  }
-  const flutter = {
-    backgroundColor : 'var(--color-flutterColor)',
-    border : '2px solid var(--color-flutterColor)',
+    color: 'var(--color-nodejsColor)',
   }
   const flutterHover = {
     border : '2px solid var(--color-flutterColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const graphql = {
-    backgroundColor : 'var(--color-graphqlColor)',
-    border : '2px solid var(--color-graphqlColor)',
+    color: 'var(--color-flutterColor)',
   }
   const graphqlHover = {
     border : '2px solid var(--color-graphqlColor)',
     backgroundColor: 'transparent',
-  }
-  const netlify = {
-    backgroundColor : 'var(--color-netlifyColor)',
-    border : '2px solid var(--color-netlifyColor)',
-
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
+    color: 'var(--color-graphqlColor)',
   }
   const netlifyHover = {
     border : '2px solid var(--color-netlifyColor)',
     backgroundColor: 'transparent',
-  }
-  const git = {
-    backgroundColor : 'var(--color-gitColor)',
-    border : '2px solid var(--color-gitColor)',
-
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
+    color: 'var(--color-netlifyColor)',
   }
   const gitHover = {
     border : '2px solid var(--color-gitColor)',
     backgroundColor: 'transparent',
-  }
-  const sass = {
-    backgroundColor : 'var(--color-sassColor)',
-    border : '2px solid var(--color-sassColor)',
-
+    borderRadius : border,
+    fontSize : fontSize,
+    color: 'var(--color-gitColor)',
+    padding : size,
   }
   const sassHover = {
     border : '2px solid var(--color-sassColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
     backgroundColor: 'transparent',
-  }
-  const github = {
-    backgroundColor : 'var(--color-githubColor)',
-    border : '2px solid var(--color-githubColor)',
-
+    color: 'var(--color-sassColor)',
   }
   const githubHover = {
     border : '2px solid var(--color-githubColor)',
+    borderRadius : border,
+    fontSize : fontSize,
+    padding : size,
     backgroundColor: 'transparent',
+    color: 'var(--color-githubColor)',
   }
+
   const commonStyles = {
     backgroundColor : 'var(--color-secondaryColor)',
+    borderRadius : border,
+    padding : size,
     color           : 'white'
   };
   const outlineStyles = {
@@ -331,4 +452,4 @@ const TopicComponent = ({children, onClick, to, tagName, disabled, type, style, 
         </Topic>
     );
 }
-export default TopicComponent;
+export default TopicItem;

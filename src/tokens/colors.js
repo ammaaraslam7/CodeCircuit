@@ -21,7 +21,7 @@ const colors = {
   darkBlue: '#022a4b',
   beige: '#fff9d9',
   red: '#ff0000',
-  primaryColor: '#0F52BA',
+  primaryColor: '#115dd2',
   secondaryColor: '#FA8072',
   lightColor: '#D8EEFE',
   darkerLightColor: '#aadafc',
@@ -60,6 +60,10 @@ export const COLORS = {
   primaryBackground: {
     light: colors.lightColor,
     dark: colors.darkColor,
+  },
+  invertedBackground: {
+    light: colors.lighterDarkColor,
+    dark: colors.lighterLightColor,
   },
   darkerBackground: {
     light: colors.darkerLightColor,

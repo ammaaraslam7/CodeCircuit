@@ -2,19 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import Wrapper from '../components/Wrapper'
-import Hero from '../components/Hero'
 import PostsList from '../components/PostsList'
-import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import styled from 'styled-components'
-import Button from '../components/Button'
-import useSiteMetadata from '../hooks/use-site-config'
-import { media } from '../tokens'
-import useSiteImages from '../hooks/use-site-images'
-import TopicComponent from '../components/TopicsComponent'
-import CodeCircuitLogoLight from '../images/CodeCircuitLogoLight.png'
+import TopicItem from '../components/TopicItem'
 import LogoChange from '../components/LogoChange'
+import '@fontsource/rubik/800.css'
+import '@fontsource/roboto/400.css'
+import Button from '../components/Button'
 
 
 const HomeHero = styled.div`
@@ -32,6 +27,7 @@ const HomeHero = styled.div`
     text-align: center;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    
     
 `
 const HomeHeroLogoContainer = styled.div`
@@ -56,15 +52,17 @@ const HomeHeroInfo = styled.div`
 `
 const HomeHeroInfoHeading = styled.h1`
     text-decoration: none;
+    font-family: 'Rubik';
     padding-bottom: 20px;
-    font-size: 4rem;
+    font-size: 4.2rem;
     font-weight: 1700;
     line-height: 1.3cm;
 `
 const HomeHeroInfoPara = styled.p`
     text-decoration: none;
     padding-bottom: 35px;
-    font-size: 1.8rem;
+    font-family: 'Roboto';
+    font-size: 2rem;
     font-weight: 700;
     line-height: 0.85cm;
 `
@@ -106,12 +104,14 @@ const SectionTitle = styled.h1`
     line-height: 1.3cm;
     color: var(--color-primaryText);
     border-bottom: 2px solid var(--color-primaryText);
+    font-family: 'Rubik';
 `
 
 const AllBtn = styled.div`
     position: absolute;
     right: 15px;
     transform: translateY(-55px);
+    font-family: 'Roboto';
 `
 const RecentPosts = styled.div`
   padding-top: 10px;
@@ -142,6 +142,7 @@ const Topics = styled.div`
   justify-items: center;
   grid-gap: 50px;
   grid-template-columns: repeat(3, 1fr);
+  font-family: 'Rubik';
 
   @media screen and (max-width: 500px) {
     & {
@@ -169,7 +170,6 @@ class BlogList extends React.Component {
               <HomeHeroInfoPara>
                 Programming and Web Development tutorials.
               </HomeHeroInfoPara>
-              <Button type="big-primary" textColor='var(--color-darkColor)'>Secondary</Button>
             </HomeHeroInfo>
           </HomeHero>
           <HomeBodyWrapper>
@@ -188,12 +188,12 @@ class BlogList extends React.Component {
                 <AllBtn><Button type="mini-secondary" textColor='var(--color-secondaryText)' to="/tags">All Topics ➡ </Button></AllBtn>
               </SectionTitle>
               <Topics>
-                <TopicComponent type="gatsby" to='/tags/gatsby'>Gatsby</TopicComponent>
-                <TopicComponent type="react" to='/tags/react'>React</TopicComponent>
-                <TopicComponent type="python" to='/tags/python'>Python</TopicComponent>
-                <TopicComponent type="django" to='/tags/django'>Django</TopicComponent>
-                <TopicComponent type="css" to='/tags/css'>CSS</TopicComponent>
-                <TopicComponent type="git" to='/tags/git'>Git</TopicComponent>
+                <TopicItem type="gatsby" to='/tags/gatsby'>Gatsby</TopicItem>
+                <TopicItem type="react" to='/tags/react'>React</TopicItem>
+                <TopicItem type="python" to='/tags/python'>Python</TopicItem>
+                <TopicItem type="django" to='/tags/django'>Django</TopicItem>
+                <TopicItem type="css" to='/tags/css'>CSS</TopicItem>
+                <TopicItem type="git" to='/tags/git'>Git</TopicItem>
               </Topics>
             </TopicsSection>
           </HomeBodyWrapper>

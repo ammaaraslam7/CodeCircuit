@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import useSiteMetadata from '../hooks/use-site-config'
 import { GrGatsbyjs } from 'react-icons/gr';
 import { SiNetlify } from 'react-icons/si';
+import '@fontsource/rubik/700.css'
+import '@fontsource/roboto/400.css'
+
 import {
   FaReact,
   FaHeart,
@@ -44,6 +47,7 @@ const FooterLinkItem = styled(Link)`
   padding-left: 10px;
   padding-right: 10px;
   transition: all 0.2s ease-in-out;
+  font-family: 'Rubik';
   color: var(--color-primaryColor);
   &:hover {
     color: var(--color-secondaryColor);
@@ -58,6 +62,7 @@ const FooterText = styled.p`
   color: var(--color-secondaryText);
   text-align: center;
   align-items: center;
+  font-family: 'Roboto';
   padding-top: 8.5px;
 `
 const FooterSpanText = styled(Link)`
@@ -80,19 +85,6 @@ const AuthorName = styled(Link)`
     cursor: pointer;
   }
 `
-const HeartIcon = styled(FaHeart)`
-  color: var(--color-secondaryText);
-  padding-left: 2.5px;
-  padding-right: 2.5px;
-  font-size: 1.5rem;
-  transition: all 0.2s ease-in-out;
-  transform: translateY(5px);
-  &:hover {
-    color: crimson;
-    transform: translateY(-1px);
-  }
-`
-
 const GatsbyIcon = styled(GrGatsbyjs)`
   color: var(--color-secondaryText);
   padding-left: 2.5px;
@@ -141,14 +133,14 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterLinks>
-        <FooterLinkItem>About</FooterLinkItem>
-        <FooterLinkItem>Terms</FooterLinkItem>
-        <FooterLinkItem>Contact</FooterLinkItem>
-        <FooterLinkItem>Privacy</FooterLinkItem>
+        <FooterLinkItem to='/about'>About</FooterLinkItem>
+        <FooterLinkItem to='/terms'>Terms</FooterLinkItem>
+        <FooterLinkItem to='/impressum'>Impressum</FooterLinkItem>
+        <FooterLinkItem to='/advertise'>Advertise</FooterLinkItem>
       </FooterLinks>
-      <FooterText><FooterSpanText>Code Circuit</FooterSpanText> © 2021</FooterText>
+      <FooterText><FooterSpanText to='/'>Code Circuit</FooterSpanText> © 2021</FooterText>
       <FooterText>
-        Built with <HeartIcon /> <GatsbyIcon href='www.gatsbyjs.com' /> <ReactIcon /> by <AuthorName>Ammaar Aslam</AuthorName> and hosted on <NetlifyIcon />
+        Built with <GatsbyIcon href='www.gatsbyjs.com' /> <ReactIcon /> by <AuthorName>Ammaar Aslam</AuthorName> and hosted on <NetlifyIcon />
         </FooterText>
     </FooterContainer>
   )

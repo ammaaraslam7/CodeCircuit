@@ -35,7 +35,7 @@ ol {
 }
 
 *::selection {
-  background-color: var(--color-secondary);
+  background-color: '#2D7EE';
 }
 `
 export const StyledLink = styled(Link)`

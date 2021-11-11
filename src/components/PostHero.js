@@ -14,6 +14,7 @@ const HeroContainer = styled.div`
   background-size: cover;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+  font-family: 'Lato';
 `
 
 const TitleContainer = styled.div`
@@ -25,7 +26,7 @@ const TitleContainer = styled.div`
 
 const HeroTitle = styled.h1`
   font-weight: 700;
-  font-size: 3.5rem;
+  font-size: 4.1rem;
   margin: 10px 50px;
   color: var(--color-white);
   text-shadow: 1px 1px 4px rgba(34, 34, 34, 0.85);

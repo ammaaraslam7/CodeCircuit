@@ -9,10 +9,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   )
   const PageTemplate = require.resolve('./src/templates/page.js')
   const PostsBytagTemplate = require.resolve('./src/templates/tags.js')
-  const ListPostsTemplate = require.resolve(
+  const HomeListPostsTemplate = require.resolve(
     './src/templates/blog-list-template.js'
   )
-
+  const AllListPostsTemplate = require.resolve('./src/pages/articles.js')
   const allMarkdownQuery = await graphql(`
     {
       allMarkdown: allMdx(
@@ -72,7 +72,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: nbPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/` : `/pages/${i + 1}`,
-      component: ListPostsTemplate,
+      component: HomeListPostsTemplate,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        currentPage: i + 1,
+        nbPages: nbPages,
+      },
+    })
+  })
+  Array.from({ length: nbPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/articles` : `/pages/${i + 1}`,
+      component: AllListPostsTemplate,
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,

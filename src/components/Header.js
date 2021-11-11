@@ -12,6 +12,8 @@ import styled from 'styled-components';
 import {RiArticleFill} from 'react-icons/ri'
 import {FaTags} from 'react-icons/fa'
 import LogoChange from './LogoChange'
+import '@fontsource/rubik/800.css'
+
 
 
 export const Nav = styled.nav`
@@ -28,6 +30,9 @@ export const Nav = styled.nav`
   font-weight: 700;
   position: fixed;
   transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 7px black;
+  font-family: 'Rubik';
   @media screen and (max-width: 768px) {
     font-size: 1.3rem;
     font-weight: 650;
@@ -49,7 +54,7 @@ const NavLogoContainer = styled(Link)`
 
 const NavLogo = styled.img`
   display: flex;
-  align-items: center;
+  align-items: bottom;
   text-decoration: none;
   width: 70px;
   height: 70px;
@@ -60,8 +65,9 @@ const NavLogo = styled.img`
 `
 const NavLogoTitle = styled.a`
   text-decoration: none;
-  color: white;
+  color: var(--color-primaryText);
   margin-left: 9px;
+  font-size: 31px;
   @media screen and (max-width: 768px) {
     font-size: 16px;
     margin-left: 5px;
@@ -95,7 +101,7 @@ export const NavLink = styled(Link)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 30px;
   /* Second Nav */
   /* margin-right: 24px; */
   /* Third Nav */
