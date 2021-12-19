@@ -17,22 +17,23 @@ const DarkModeButton = styled.button`
 
 const MoonIcon = styled(BsMoonStarsFill)`
   font-size: 26px;
-  color: var(--color-primaryColor);
   transition: all 0.2s;
+  color: var(--color-invertedBackground);
+  transition: 0.25s ease-in;
   &:hover{
-    color: var(--color-secondaryColor);
+    color: var(--color-primaryColor);
     transform: rotate(360deg);
     cursor: pointer;
   }
 `
 const SunIcon = styled(BsFillSunFill)`
   font-size: 26px;
-  color: var(--color-primaryColor);
-  transition: all 0.2s;
+  color: var(--color-invertedBackground);
+  transition: 0.25s ease-in;
   &:hover{
-    color: var(--color-secondaryColor);
-    cursor: pointer;
+    color: var(--color-primaryColor);
     transform: rotate(360deg);
+    cursor: pointer;
   }
 `
 const DarkToggle = ({ isExpanded = false }) => {

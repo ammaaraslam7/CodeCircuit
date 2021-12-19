@@ -29,9 +29,7 @@ export const Nav = styled.nav`
   font-size: 26px;
   font-weight: 700;
   position: fixed;
-  transition: all 0.3s;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 7px black;
+  box-shadow: 0px 15px 10px -15px var(--color-invertedBackground);
   font-family: 'Rubik';
   @media screen and (max-width: 768px) {
     font-size: 1.3rem;
@@ -46,6 +44,7 @@ const NavLogoContainer = styled(Link)`
   text-decoration: none;
   padding: 0;
   margin-left: 7px;
+  
   &:hover {
     cursor: pointer;
   }
@@ -65,9 +64,10 @@ const NavLogo = styled.img`
 `
 const NavLogoTitle = styled.a`
   text-decoration: none;
-  color: var(--color-primaryText);
+  color: var(--color-invertedBackground);
   margin-left: 9px;
   font-size: 31px;
+  max-width: 100px;
   @media screen and (max-width: 768px) {
     font-size: 16px;
     margin-left: 5px;
@@ -89,11 +89,10 @@ export const NavItem = styled.div`
 `;
 
 export const NavLink = styled(Link)`
-  transition: all 0.3s;
-  color: var(--color-primaryColor);
+  color: var(--color-invertedBackground);
+  transition: 0.25s ease-in;
   &:hover {
-    cursor: pointer;
-    color: var(--color-secondaryColor);
+    color: var(--color-primaryColor);
   }
 `
 
@@ -122,11 +121,11 @@ export const NavBtns = styled.nav`
 
 
 
-const ArticleIcon = styled(RiArticleFill)`
+const TutorialsIcon = styled(RiArticleFill)`
   transform: translateY(2px);
   padding: 0;
 `
-const TagsIcon = styled(FaTags)`
+const TopicsIcon = styled(FaTags)`
   transform: translateY(2px);
   padding: 0;
 `
@@ -153,10 +152,10 @@ const Header = (props) => {
 
         <NavMenu>
           <NavItem>
-            <NavLink to="/articles"><ArticleIcon /> Articles</NavLink>
+            <NavLink to="/tutorials"><TutorialsIcon /> Tutorials</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/tags"><TagsIcon /> Tags</NavLink>
+            <NavLink to="/tags"><TopicsIcon /> Topics</NavLink>
           </NavItem>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}

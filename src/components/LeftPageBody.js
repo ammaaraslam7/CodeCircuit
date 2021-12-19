@@ -7,8 +7,10 @@ const LeftPageBodyContainer = styled.section`
     align-items: center;
     float: left;
     width: 72%;
-    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 40px;
     transform: translateY(-50px);
+    
 `
 
 const LeftPageBody = ({children}) => {

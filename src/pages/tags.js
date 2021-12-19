@@ -14,18 +14,9 @@ import SEO from '../components/SEO'
 import Hero from '../components/Hero'
 import styled from 'styled-components'
 import TopicItem from '../components/TopicItem'
-
-const PageBody = styled.div`
-    background-color: var(--color-darkerBackground);
-    width: 97%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 45px;
-    transform: translateY(-50px);
-    padding-top: 20px;
-    padding-bottom: 10px;
-`
+import LeftPageBody from '../components/LeftPageBody'
+import RightSection from '../components/RightSection'
+import { PageBody } from "../components/PageBody"
 
 const TagList = styled.div`
   padding-top: 60px;
@@ -36,11 +27,11 @@ const TagList = styled.div`
   display: grid;
   justify-items: center;
   grid-gap: 100px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   @media screen and (max-width: 500px) {
     & {
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 `
@@ -54,21 +45,25 @@ const TagsPage = ({
   },
 }) => (
     <Layout>
-        <SEO title={`All Tags`} />
-        <Hero title="All Tags" />
+        <SEO title={`All Topics`} />
+        <Hero title="All Topics" />
+        
         <PageBody>
-          <TagList>
-              {group.map(tag => (
-              <li key={tag.fieldValue}>
-                  <TopicItem type={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                  {tag.fieldValue} ({tag.totalCount})
-                  </TopicItem>
-                  {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                  {tag.fieldValue} ({tag.totalCount})
-                  </Link> */}
-              </li>
-              ))}
-          </TagList>
+          <LeftPageBody>
+            <TagList>
+                  {group.map(tag => (
+                  <li key={tag.fieldValue}>
+                      <TopicItem type={tag.fieldValue} size='20px' fontSize='26px' to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                      {tag.fieldValue} ({tag.totalCount})
+                      </TopicItem>
+                      {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                      {tag.fieldValue} ({tag.totalCount})
+                      </Link> */}
+                  </li>
+                  ))}
+              </TagList>
+          </LeftPageBody>
+          <RightSection />
         </PageBody>
     </Layout>
       

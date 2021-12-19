@@ -1,38 +1,59 @@
 import React from 'react'
 import styled from 'styled-components'
-import ContentHeader from './ContentHeader'
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
+import '@fontsource/rubik/700.css'
+import '@fontsource/roboto/400.css'
 
 const ContentBody = styled.div`
   line-height: 1.6;
+  font-family: 'Roboto';
 
   & > h2 {
-    color: var(--color-h2);
-    padding-top: 3rem;
-    margin-top: 3rem;
-    border-top: 1px solid #ececec;
+    color: var(--color-primaryColor);
+    scroll-margin-top: 5rem;
+    font-family: 'Rubik';
+    font-size: 2.1rem;
+    text-decoration: underline;
+    text-decoration-color: var(--color-secondaryColor);
   }
 
   & > h3 {
     padding-top: 3rem;
+    color: var(--color-secondaryText);
+    font-family: 'Rubik';
+    font-size: 1.8rem;
   }
 
   & > p {
     margin: 1em 0 0 0;
+    color: var(--color-primaryText);
+    font-family: 'Roboto';
+    font-size: 1.2rem;
   }
 
   & a {
-    fill: var(--color-primaryText);
-    box-shadow: 0 2px 0 0 var(--color-secondary);
+    padding-left: 2px;
+    padding-right: 2px;
+    background-image: linear-gradient(120deg, #FA8072 0%, #FA8072 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
 
     &:hover {
-      filter: brightness(150%);
-      box-shadow: none;
+      background-size: 100% 88%;
     }
+
 
     &.anchor,
     &.gatsby-resp-image-link {
       box-shadow: none;
+      padding-top: 90px;
+    }
+    &.anchor {
+      font-size: 1.1rem;
+      color: #FA8072;
+
     }
   }
 
@@ -43,7 +64,8 @@ const ContentBody = styled.div`
   h5 .anchor svg,
   h6 .anchor svg {
     visibility: hidden;
-    margin-left: -16px;
+    margin-left: -25px;
+    
   }
 
   h1:hover .anchor svg,
@@ -63,16 +85,19 @@ const ContentBody = styled.div`
 
   & > blockquote {
     box-sizing: border-box;
-    background-color: var(--color-secondaryContentBackground);
-    border-left: 5px solid var(--color-secondary);
+    background-color: var(--color-lighterBackground);
+    border-left: 15px solid var(--color-secondaryColor);
     margin: 30px 0px;
     padding: 5px 20px;
-    border-radius: 0 8px 8px 0;
+    border-radius: 2px 13px 13px 2px;;
+    font-family: 'Rubik';
   }
 
   & > blockquote p {
     margin: 0.8em 0;
     font-style: italic;
+    font-family: 'Roboto';
+    color: var(--color-primaryText)
   }
 
   & .gatsby-highlight {
@@ -123,9 +148,9 @@ const ContentBody = styled.div`
   & li > code.language-text,
   & em > code.language-text,
   & strong > code.language-text {
-    background: var(--color-beige);
-    color: #222222cc;
-    padding: 0 3px;
+    background: var(--color-lighterBackground);
+    color: var(--color-primaryText);
+    padding: 4px 6px;
     font-size: 0.94em;
     border-radius: 0.3rem;
     word-wrap: break-word;
@@ -138,16 +163,27 @@ const ContentBody = styled.div`
   & table {
     margin-top: 1em;
     margin-bottom: 1em;
-    border-collapse: collapse;
     overflow: hidden;
+    border-radius: 20px;
+    margin-left: 35%;
 
     & th,
     & td {
-      padding: 0.5em;
-      background-color: var(--color-secondaryContentBackground);
+      padding: 1rem;
+      background-color: var(--color-lighterBackground);
+    }
+    & th {
+      color: var(--color-secondaryColor);
+      font-family: 'Rubik';
+      font-size: 1.2rem;
+    }
+    & td {
+      color: var(--color-secondaryText);
+      font-family: 'Roboto';
+      font-size: 1rem;
     }
     & tr {
-      border-bottom: 2px solid var(--color-white);
+      border-bottom: 2px solid var(--color-darkerBackground);
     }
     & tbody tr:last-child {
       border-bottom: none;
@@ -161,10 +197,6 @@ class Content extends React.Component {
 
     return (
       <section>
-        {(tags || date || translations) && (
-          <ContentHeader date={date} tags={tags} translations={translations} />
-        )}
-
         <ContentBody>
           <MDXRenderer>{content}</MDXRenderer>
         </ContentBody>

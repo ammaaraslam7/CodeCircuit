@@ -56,7 +56,7 @@ const SEO = props => {
 
         {/* OpenGraph tags */}
         <meta property="og:url" content={url} />
-        <meta property="og:type" content={isBlogPost ? 'article' : 'website'} />
+        <meta property="og:type" content={isBlogPost ? 'tutorial' : 'website'} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />

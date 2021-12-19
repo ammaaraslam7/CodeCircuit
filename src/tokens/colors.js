@@ -25,7 +25,7 @@ const colors = {
   secondaryColor: '#FA8072',
   lightColor: '#D8EEFE',
   darkerLightColor: '#aadafc',
-  lighterLightColor: 'e7f4fe',
+  lighterLightColor: '#e7f4fe',
   darkColor: '#252A34',
   darkerDarkColor: '#16191f',
   lighterDarkColor: '#333947',
@@ -79,6 +79,14 @@ export const COLORS = {
   },
   secondaryText: {
     light: colors.lighterDarkColor,
+    dark: colors.darkerLightColor,
+  },
+  primaryScrollbar: {
+    light: colors.darkColor,
+    dark: colors.lightColor,
+  },
+  secondaryScrollbar: {
+    light: colors.darkerDarkColor,
     dark: colors.darkerLightColor,
   },
   siteBackground: {

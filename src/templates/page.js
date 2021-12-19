@@ -20,6 +20,8 @@ const PageBody = styled.div`
   padding-left: 15px;
   padding-right: 15px;
   transform: translateY(-50px);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 `
 
 const Page = props => {

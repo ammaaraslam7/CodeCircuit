@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import {Link} from 'gatsby'
+import '@fontsource/roboto/500.css'
+
 const ButtonComponent = styled(Link)`
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Roboto';
     position: relative;
     font-weight: 540;
     line-height: 2;
@@ -34,37 +36,41 @@ const Button = ({ children, onClick, to, textColor, disabled, type, style, ...pr
     const miniPrimary = {
         letterSpacing: '0.5px',
         backgroundColor : 'transparent',
-        color           : 'var(--color-primaryColor)',
-        border          : `2px solid var(--color-primaryColor)`,
-        width           : '90px',
+        color           : 'var(--color-secondaryText)',
+        border          : `2px solid var(--color-secondaryText)`,
+        maxWidth           : '100px',
         height          : '22px',
         fontSize        : '0.9rem',
+        padding         : '5px',
     }
     const miniPrimaryHover = {
-        backgroundColor : 'var(--color-primaryColor)',
+        backgroundColor : 'var(--color-secondaryText)',
         letterSpacing: '0.5px',
-        border          : `2px solid var(--color-primaryColor)`,
-        color           : textColor,
-        width           : '90px',
+        border          : `2px solid var(--color-secondaryText)`,
+        color           : 'var(--color-secondaryColor)',
+        maxWidth           : '100px',
         height          : '22px',
         fontSize        : '0.9rem',
-        transform       : 'translateY(-2px)'
+        transform       : 'translateY(-2px)',
+        padding         : '3px',
     }
     const miniSecondary = {
         backgroundColor : 'transparent',
-        color           : 'var(--color-secondaryColor)',
+        color           : 'var(--color-secondaryText)',
         letterSpacing: '0.5px',
-        border          : `2px solid var(--color-secondaryColor)`,
-        width           : '90px',
+        border          : `2px solid var(--color-secondaryText)`,
+        maxWidth           : '150px',
         height          : '22px',
+        padding         : '5px',
         fontSize        : '0.9rem',
     }
     const miniSecondaryHover = {
-        backgroundColor : 'var(--color-secondaryColor)',
-        border          : `2px solid var(--color-secondaryColor)`,
+        backgroundColor : 'var(--color-secondaryText)',
+        padding         : '5px',
+        border          : `2px solid var(--color-secondaryText)`,
         letterSpacing: '0.5px',
-        color           : textColor,
-        width           : '90px',
+        color           : 'var(--color-darkerBackground)',
+        maxWidth           : '150px',
         height          : '22px',
         fontSize        : '0.9rem',
         transform       : 'translateY(-2px)'
@@ -245,20 +251,3 @@ const Button = ({ children, onClick, to, textColor, disabled, type, style, ...pr
 };
 
 export default Button;
-
-
-// use case
-
-//<Button>Normal Button</Button>
-//<Button btnColor="blue" type="outline">
-//  Outline Button
-//</Button>
-//<Button btnColor="red" disabled>
-//  Disabled Button
-//</Button>
-//<Button btnColor="yellow" type="rounded" labelColor="black">
-//  Rounded Button
-//</Button>
-//<Button type="block" btnColor="black">
-//  Block Button
-//</Button>

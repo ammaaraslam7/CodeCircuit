@@ -11,7 +11,7 @@ import {HiArrowRight} from 'react-icons/hi'
 import useSiteImages from '../hooks/use-site-images'
 import '@fontsource/rubik/700.css'
 import '@fontsource/roboto/400.css'
-
+import Time from '../components/Time'
 const Post = styled.li`
   position: relative;
   display: flex;
@@ -23,10 +23,11 @@ const Post = styled.li`
   width: 350px;
   height: 490px;
   transition: all 0.3s;
-  box-shadow: 0 0 0 0, 0 6px 12px black;
+  
 
   &:hover {
     transform: translateY(-10px);
+    box-shadow: 0 0 0 0, 0 6px 12px var(--color-invertedBackground);
   }
 
   @media screen and (max-width: 500px) {
@@ -85,7 +86,7 @@ const ReadPostText = styled(Link)`
   }
 `
 
-const PostImage = styled.div`
+const PostImage = styled(Link)`
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
@@ -118,14 +119,19 @@ const Excerpt = styled.p`
 `
 
 const PostTitleLink = styled(Link)`
-    font-family: 'Rubik';
+  font-family: 'Rubik';
   font-size: 1.6rem;
   font-weight: 1000;
   color: var(--color-secondaryColor);
-  z-index: 1;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-image: linear-gradient(120deg, #115dd2 0%, #115dd2 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
   &:hover {
-    font-weight: 1500;
-    border-bottom: 2px dotted var(--color-secondaryColor);
+    background-size: 100% 88%;
   }
 `
 const PostTags = styled.div`
@@ -147,7 +153,7 @@ const FooterLine = styled.div`
 
 const Date = styled.span`
   color: var(--color-primaryText);
-  transform: translateX(3px);
+  margin-left: 6px;
 `
 
 
@@ -164,7 +170,7 @@ const CalendarIcon = styled(FaRegCalendarAlt)`
 
 
 const PostsListItem = props => {
-  const { title, excerpt, slug, language, cover, tags, timeToRead } = props
+  const { title, excerpt, slug, language, cover, tags, date, timeToRead } = props
   const { defaultLang } = useSiteMetadata()
   const { siteCover } = useSiteMetadata()
   const { fluid } = useSiteImages(siteCover)
@@ -172,13 +178,13 @@ const PostsListItem = props => {
  
   return (
     <Post>
-      <PostImage style={{ backgroundImage: `url("${heroImg}")` }} />
+      <PostImage style={{ backgroundImage: `url("${heroImg}")` }} to={`/tutorial/${slug}`} />
       <PostHeader>
         <PostTags>
           <TagList tags={tags} />
         </PostTags>
         <h2>
-          <PostTitleLink to={`/${slug}`}>
+          <PostTitleLink to={`/tutorial/${slug}`}>
             {defaultLang !== language && <Flag language={language} />}
             {title}
           </PostTitleLink>
@@ -193,12 +199,9 @@ const PostsListItem = props => {
         <FooterLine>
           <ClockIcon />
           <ReadingTime min={timeToRead} />
-          <Bull />
-          <CalendarIcon />
-          <Date>27 Sept 2021</Date>
         </FooterLine>
         <ReadPost>
-          <ReadPostText to={`/${slug}`} aria-label={`View ${title} article`}>Read More <RightArrowIcon /></ReadPostText>
+          <ReadPostText to={`/tutorial/${slug}`} aria-label={`View ${title} tutorial`}>Read More <RightArrowIcon /></ReadPostText>
         </ReadPost>
       </footer>
     </Post>

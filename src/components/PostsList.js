@@ -10,13 +10,7 @@ const PostListLayout = styled.ul`
   display: grid;
   justify-items: center;
   grid-gap: 50px;
-  grid-template-columns: repeat(3, 1fr);
-
-  @media screen and (max-width: 500px) {
-    & {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
+  grid-template-columns: repeat(2, 1fr);
 `
 
 
@@ -32,14 +26,15 @@ const PostsList = ({ posts }) => {
       language: post.node.frontmatter.language || defaultLang,
       tags: post.node.frontmatter.tags || [],
     }
+    
     return ( 
       <PostsListItem key={props.slug} {...props} />            
 
 
     )});
-  
+
   return (
-      <PostListLayout>{PostList}</PostListLayout>
+      <PostListLayout type='button'>{PostList}</PostListLayout>
   );
 
   // const PostList = posts.map(({ frontmatter, fields, excerpt, timeToRead }) => {

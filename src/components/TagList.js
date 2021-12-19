@@ -62,9 +62,9 @@ class TagList extends React.Component {
           return (
             <Fragment key={`tag-list-${i}`}>
               {!noLink && (
-                <TopicItem type={tag} size='5px' border='3px' fontSize='15px' to={`/tags/${tag}`}>{tag}</TopicItem>
+                <TopicItem type={`${tag}-inverted`} size='5px' border='10px' fontSize='15px' to={`/tags/${tag}`}>{tag}</TopicItem>
               )}
-              {noLink && <TopicItem type={tag} size='5px' fontSize='15px' border='3px' to={`/tags/${tag}`}>{tag}</TopicItem>}
+              {noLink && <TopicItem type={tag} size='5px' fontSize='15px' border='10px' to={`/tags/${tag}`}>{tag}</TopicItem>}
               {i < tags.length - 1 ? ' ' : ''}
             </Fragment>
           )

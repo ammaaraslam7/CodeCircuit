@@ -7,20 +7,21 @@ import PostsList from '../components/PostsList'
 import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
 import Hero from '../components/Hero'
+import LeftPageBody from '../components/LeftPageBody'
+import RightSection from '../components/RightSection'
 
 const PageBody = styled.div`
-    background-color: white;
-    width: 96%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 45px;
-    transform: translateY(-50px);
-    padding: 10px;
-    padding-top: 20px;
-    padding-bottom: 10px;
+  background-color: var(--color-lighterBackground);
+  width: 100%;
+  content: "";
+  clear: both;
+  display: table;
+  padding-left: 15px;
+  padding-right: 15px;
+  transform: translateY(-50px);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 `
-
 const PageTitle = styled.h1`
   padding-bottom: 10px;
   text-transform: capitalize;
@@ -33,12 +34,14 @@ class Tags extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <SEO title={`Top blog posts on ${this.props.pageContext.tag}`} />
-        <Hero title={pageTitle} />
+        <SEO title={`Tutorials on ${this.props.pageContext.tag}`} />
+        <Hero title={`Tutorials on ${pageTitle}`} />
 
         <PageBody>
-          <PageTitle>Posts on {this.props.pageContext.tag}</PageTitle>
-          <PostsList posts={posts} />
+          <LeftPageBody>
+            <PostsList posts={posts} />
+          </LeftPageBody>
+          <RightSection />
         </PageBody>
       </Layout>
     )

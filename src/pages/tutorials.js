@@ -4,6 +4,23 @@ import SEO from '../components/SEO'
 import Hero from '../components/Hero'
 import PostsList from '../components/PostsList'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
+import LeftPageBody from '../components/LeftPageBody'
+import RightSection from '../components/RightSection'
+
+const PageBody = styled.div`
+  background-color: var(--color-lighterBackground);
+  width: 100%;
+  content: "";
+  clear: both;
+  display: table;
+  padding-left: 15px;
+  padding-right: 15px;
+  transform: translateY(-50px);
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  
+`
 
 class AllArticlesPage extends React.Component {
     render() {
@@ -11,16 +28,21 @@ class AllArticlesPage extends React.Component {
 
         return (
             <Layout>
-                <SEO title={`All Articles Page`} />
-                <Hero title="All Articles Page" />
-                <PostsList posts={posts} />
+                <SEO title={`All Tutorials`} />
+                <Hero title="All Tutorials" />
+                <PageBody>
+                  <LeftPageBody>
+                    <PostsList posts={posts} />
+                  </LeftPageBody>
+                  <RightSection />
+                </PageBody>
             </Layout>
         )
     }
 }
 
 export default AllArticlesPage
-export const articlesQuery = graphql`
+export const tutorialsQuery = graphql`
   query allArticlesQuery($skip: Int!) {
     site {
       siteMetadata {
@@ -43,6 +65,7 @@ export const articlesQuery = graphql`
           timeToRead
           frontmatter {
             title
+            date
             tags
             language
             slug

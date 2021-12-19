@@ -48,10 +48,10 @@ const FooterLinkItem = styled(Link)`
   padding-right: 10px;
   transition: all 0.2s ease-in-out;
   font-family: 'Rubik';
-  color: var(--color-primaryColor);
+  color: var(--color-invertedBackground);
+  transition: 0.25s ease-in;
   &:hover {
-    color: var(--color-secondaryColor);
-    cursor: pointer;
+    color: var(--color-primaryColor);
   }
 
 `
@@ -59,7 +59,7 @@ const FooterText = styled.p`
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--color-secondaryText);
+  color: var(--color-primaryText);
   text-align: center;
   align-items: center;
   font-family: 'Roboto';
@@ -67,21 +67,35 @@ const FooterText = styled.p`
 `
 const FooterSpanText = styled(Link)`
   text-decoration: none;
+  padding-left: 2px;
+  padding-right: 2px;
   color: var(--color-secondaryColor);
-  transition: all 0.2s ease-in-out;
+  background-image: linear-gradient(120deg, #115dd2 0%, #115dd2 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  font-family: 'Rubik';
+  transition: background-size 0.25s ease-in;
   &:hover {
-    border-bottom: 1.5px solid var(--color-secondaryColor);
+    background-size: 100% 88%;
     cursor: pointer;
   }
 
 `
 const AuthorName = styled(Link)`
+  font-family: 'Rubik';
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   color: var(--color-primaryColor);
+  padding-left: 2px;
+  padding-right: 2px;
+  background-image: linear-gradient(120deg, #FA8072 0%, #FA8072 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
   &:hover {
-    
-    border-bottom: 1.5px solid var(--color-primaryColor);
+    background-size: 100% 88%;
     cursor: pointer;
   }
 `
@@ -140,7 +154,7 @@ const Footer = () => {
       </FooterLinks>
       <FooterText><FooterSpanText to='/'>Code Circuit</FooterSpanText> © 2021</FooterText>
       <FooterText>
-        Built with <GatsbyIcon href='www.gatsbyjs.com' /> <ReactIcon /> by <AuthorName>Ammaar Aslam</AuthorName> and hosted on <NetlifyIcon />
+        Built with <a href='https://www.gatsbyjs.com' target='_blank'><GatsbyIcon /></a> <a href='https://www.reactjs.com' target='_blank'><ReactIcon /></a> by <AuthorName>Ammaar Aslam</AuthorName> and hosted on <a href='https://www.netlify.com' target='_blank'><NetlifyIcon /></a>
         </FooterText>
     </FooterContainer>
   )

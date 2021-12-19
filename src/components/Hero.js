@@ -10,12 +10,13 @@ const HeroContainer = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  top: 0;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-color: var(--color-primaryBackground);
-  border-bottom-left-radius: 45px;
-  border-bottom-right-radius: 45px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 `
 
 const TitleContainer = styled.div`
@@ -25,18 +26,22 @@ const TitleContainer = styled.div`
   width: 100%;
 `
 
+
 const HeroTitle = styled.h1`
   font-weight: 700;
   font-size: 4.1rem;
   margin: 10px 50px;
   font-family: 'Rubik';
   color: var(--color-secondaryColor);
+  text-transform: capitalize;
+  
 `
 
 const HeroSubTitle = styled.h2`
   margin: 10px 50px;
   color: var(--color-white);
   text-shadow: 1px 1px 4px rgba(34, 34, 34, 0.85);
+  text-transform: capitalize;
 `
 
 const Hero = props => {

@@ -3,57 +3,59 @@ import styled from 'styled-components'
 import { Text } from './Commons'
 import useSiteMetadata from '../hooks/use-site-config'
 import useSiteImages from '../hooks/use-site-images'
+import Avatar from '../images/avatar.jpg'
+import '@fontsource/rubik/800.css'
+import '@fontsource/roboto/400.css'
 
 const BioWrapper = styled.div`
-  & .author-image {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    margin-left: -40px;
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    overflow: hidden;
-    padding: 6px;
-    z-index: 2;
-    box-shadow: #ececec 0 0 0 1px;
-    background-color: var(--color-wrapperBackground);
-  }
+  width: 75%;
+  content: "";
+  justify-items: center;
+  grid-gap: 50px;
+  grid-template-columns: repeat(3, 1fr);
 
-  & .author-image .img {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-    border-radius: 100%;
+  @media screen and (max-width: 500px) {
+    & {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
-
-  & .author-profile .author-image {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 120px;
-    height: 120px;
-    padding: 3px;
-    margin: -100px auto 0 auto;
-    box-shadow: none;
-  }
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 `
 
+const BioImage = styled.img`
+    width: 35%;
+    height: 150px;
+    border-radius: 20px;
+    align-items: right;
+    transform: translateX(100px);
+
+`
+const BioInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 40px;
+`
+const BioTitle = styled.h2`
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-secondaryText);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    font-family: 'Rubik';
+    padding-bottom: 8px;
+`
 const BioText = styled(Text)`
-  & a {
-    box-shadow: 0 2px 0 0 var(--color-secondary);
-  }
-  & a:hover {
-    filter: brightness(150%);
-    box-shadow: none;
-  }
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-primaryText);
+  font-family: 'Roboto';
 `
 
 const Bio = () => {
@@ -62,17 +64,11 @@ const Bio = () => {
 
   return (
     <BioWrapper>
-      <figure className="author-image">
-        <div
-          alt={authorName}
-          style={{ backgroundImage: `url("${fixed.src}")` }}
-          className="img"
-        />
-      </figure>
-      <section>
-        <h4>About the author</h4>
+      <BioInfo>
         <BioText dangerouslySetInnerHTML={{ __html: authorDescription }} />
-      </section>
+        <BioImage src={Avatar} alt='Author Image' />
+      </BioInfo>
+      
     </BioWrapper>
   )
 }

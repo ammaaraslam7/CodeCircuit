@@ -1,15 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const PageBody = styled.div`
-    background-color: white;
-    width: 96%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 45px;
+export const PageBody = styled.div`
+    background-color: var(--color-lighterBackground);
+    width: 100%;
+    content: "";
+    clear: both;
+    display: table;
+    padding-left: 15px;
+    padding-right: 15px;
     transform: translateY(-50px);
-    padding: 10px;
-`
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+`;
 
-export default PageBody
